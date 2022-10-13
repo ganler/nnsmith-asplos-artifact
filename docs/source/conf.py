@@ -21,8 +21,7 @@ extensions = [
 ]
 
 myst_enable_extensions = ["colon_fence"]
-pygments_style = "sphinx"
-pygments_dark_style = "monokai"
+html_theme_options = {"pygment_light_style": "emacs", "pygment_dark_style": "native"}
 
 
 templates_path = ["_templates"]
@@ -32,6 +31,6 @@ exclude_patterns = []
 # -- Options for HTML output -------------------------------------------------
 # https://www.sphinx-doc.org/en/master/usage/configuration.html#options-for-html-output
 
-html_theme = "furo"
+html_theme = "pydata_sphinx_theme"
 html_logo = "https://github.com/ganler/nnsmith-logo/raw/master/nnsmith-logo.svg"
 html_static_path = ["_static"]
