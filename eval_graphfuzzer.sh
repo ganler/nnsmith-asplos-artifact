@@ -17,7 +17,9 @@ export ORT_TIME_BUDGET=12000 # ORT evaluation is fast so we should be conservati
 # Remove old coverage files
 [ -f default.profraw ] && rm default.profraw
 # Make sure TVM/ORT dtype support config file is generated.
+mkdir -p config
 python3 nnsmith/dtype_test.py --cache config/ort_cpu_dtype.pkl
+
 # TVM
 python3 experiments/graphfuzz.py --time_budget $TVM_TIME_BUDGET --onnx_dir "$DATA_DRIVE"/graphfuzzer-tvm-onnx
 python3 experiments/cov_eval.py --model_dir "$DATA_DRIVE"/graphfuzzer-tvm-onnx    \

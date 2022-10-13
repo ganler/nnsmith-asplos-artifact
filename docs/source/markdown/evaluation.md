@@ -25,9 +25,9 @@ If you want to evaluate the artifact in the fastest way:
 - Just run this in a [tmux](https://github.com/tmux/tmux/wiki) session;
 
 ```shell
-bash artifact/eval_nnsmith.sh      # 16hr
-bash artifact/eval_graphfuzzer.sh  # 8hr
-bash artifact/eval_lemon.sh        # 4hr
+bash /artifact/eval_nnsmith.sh      # 16hr
+bash /artifact/eval_graphfuzzer.sh  # 8hr
+bash /artifact/eval_lemon.sh        # 4hr
 ```
 
 - Come back 1.5 days later;

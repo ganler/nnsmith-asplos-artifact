@@ -29,6 +29,7 @@ cd "$(dirname "$0")"/nnsmith || exit 1
 # Remove old coverage files
 [ -f default.profraw ] && rm default.profraw
 # Make sure TVM/ORT dtype support config file is generated.
+mkdir -p config
 python3 nnsmith/dtype_test.py --cache config/ort_cpu_dtype.pkl
 
 # TVM.
