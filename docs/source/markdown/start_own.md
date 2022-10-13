@@ -49,6 +49,7 @@ sudo docker run -it --name ${USER}-nnsmith ganler/nnsmith-asplos23-ae
 
 # Inside the image;
 cd /artifact
+source env.sh     # Use a virtual environment
 bash kick_tire.sh # 40 seconds
 # Running NNSmith fuzzing 20 seconds for each of tvm and onnxruntime.
 ```

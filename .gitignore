@@ -5,3 +5,4 @@ nnsmith/
 venv/
 data/graphfuzzer-*
 *.profraw
+data/lemon-onnx

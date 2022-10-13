@@ -4,3 +4,5 @@ sut/onnxruntime/
 nnsmith/
 venv/
 docs/
+data/graphfuzzer-*
+*.profraw
