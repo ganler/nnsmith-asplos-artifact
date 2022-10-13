@@ -14,7 +14,7 @@ where ONNXRuntime might use [all CPU threads](https://github.com/ise-uiuc/nnsmit
 Before you start, please make sure you have [**Docker**](https://docs.docker.com/engine/install/) installed.
 ```bash
 # Test docker availability
-sudo docker --version
+docker --version
 # Output looks like: (no error)
 # Docker version 20.10.12, build e91ed5707e
 ```
@@ -43,7 +43,7 @@ To start evaluation:
 
 ```bash
 # Pull docker image from docker hub;
-sudo docker run -it --name ${USER}-nnsmith ganler/nnsmith-asplos23-ae
+docker run -it --name ${USER}-nnsmith ganler/nnsmith-asplos23-ae
 # By using this command, you will "get into" the image like entering a virtual machine.
 # The session will be kept under the name "${USER}-nnsmith"
 
