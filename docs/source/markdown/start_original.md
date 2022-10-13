@@ -1,4 +1,3 @@
-.. _header-label:
 # Evaluation on orginal test-bed
 
 (org-setup)=
