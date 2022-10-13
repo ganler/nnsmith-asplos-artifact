@@ -31,28 +31,30 @@ rm default.profraw
 python3 nnsmith/dtype_test.py --cache config/ort_cpu_dtype.pkl
 
 # TVM.
-export LIB_PATH="$(pwd)/../sut/tvm/build/libtvm.so $(pwd)/../sut/tvm/build/libtvm_runtime.so"
+LIB_PATH="$(pwd)/../sut/tvm/build/libtvm.so $(pwd)/../sut/tvm/build/libtvm_runtime.so"
+export LIB_PATH
 start_time=$(date +%s)
 python3 nnsmith/fuzz.py --time 14400 --max_nodes 10 --eval_freq 256 \
                 --mode random --backend tvm --root nnsmith-tvm-base
-exp0_t=$(expr "$(date +%s)" - $start_time)
+exp0_t=$(($(date +%s) - start_time))
 
 start_time=$(date +%s)
 python3 nnsmith/fuzz.py --time 14400 --max_nodes 10 --eval_freq 256 \
                 --mode guided --backend tvm --root nnsmith-tvm-binning
-exp1_t=$(expr "$(date +%s)" - $start_time)
+exp1_t=$(($(date +%s) - start_time))
 
 # ONNXRuntime.
-export LIB_PATH="$(pwd)/../sut/onnxruntime/build/Linux/RelWithDebInfo/libonnxruntime_providers_shared.so $(pwd)/../sut/onnxruntime/build/Linux/RelWithDebInfo/libonnxruntime.so"
+LIB_PATH="$(pwd)/../sut/onnxruntime/build/Linux/RelWithDebInfo/libonnxruntime_providers_shared.so $(pwd)/../sut/onnxruntime/build/Linux/RelWithDebInfo/libonnxruntime.so"
+export LIB_PATH
 start_time=$(date +%s)
 python3 nnsmith/fuzz.py --time 14400 --max_nodes 10 --eval_freq 256 \
                 --mode random --backend ort --root nnsmith-ort-base
-exp2_t=$(expr "$(date +%s)" - $start_time)
+exp2_t=$(($(date +%s) - start_time))
 
 start_time=$(date +%s)
 python3 nnsmith/fuzz.py --time 14400 --max_nodes 10 --eval_freq 256 \
                 --mode guided --backend ort --root nnsmith-ort-binning
-exp3_t=$(expr "$(date +%s)" - $start_time)
+exp3_t=$(($(date +%s) - start_time))
 
 echo "Experiment time of last 4 runs: '$exp0_t','$exp1_t','$exp2_t','$exp3_t' seconds."
 

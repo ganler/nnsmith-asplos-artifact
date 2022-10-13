@@ -4,7 +4,8 @@ set -e
 set -x
 
 cd "$(dirname "$0")"/nnsmith || exit 1
-export DATA_DRIVE="$(pwd)/../data"
+DATA_DRIVE="$(pwd)/../data"
+export DATA_DRIVE
 # Note this does not need to be full 4 hours because it only takes "generation" into account.
 # While evaluation time will pad it until 4 full hours are reached.
 export TVM_TIME_BUDGET=3600  # TVM evaluation time is way slower than generation time.
