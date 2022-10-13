@@ -3,7 +3,7 @@
 (org-setup)=
 ## Setup & Kick the tire
 
-``````{admonition} Accessing the original test-bed
+``````{admonition} Access the original test-bed
 :class: important
 
 Dear reviewers, please follow the following steps:
@@ -19,8 +19,11 @@ Note the test-bed is located in Illinois, US and you can simply regard the locat
 Please do not hesitate contacting the author over HotCRP or `jiawei6@illinois.edu` for any technical issues.
 ``````
 
-``````{note}
-The experiements could take more than one day, it is recommended to open a tmux session to start it in the background and come back when the experiments are finished.
+``````{dropdown} **Use TMUX to run long experiments in the background**
+:color: info
+:icon: unlock
+
+The experiements could run over **one day**, it is recommended to open a `tmux` session to start it in the background and come back when the experiments are finished.
 
 Create a tmux session.
 ```bash
@@ -37,8 +40,10 @@ tmux at -t nnsmith-artifact
 ```
 ``````
 
-To start evaluation:
-
+:::{dropdown} **Kick the tire!**
+:open:
+:icon: code
+:color: success
 ```bash
 # Pull docker image from docker hub;
 docker run -it --name ${USER}-nnsmith -v /data/artifact/:/artifact/data/ ganler/nnsmith-asplos23-ae
@@ -53,6 +58,7 @@ bash kick_tire.sh # 40 seconds
 # Running NNSmith fuzzing 20 seconds for each of tvm and onnxruntime.
 # It generates bug reports (if any) in `/artifact/nnsmith/kk-tire-ort` and `/artifact/nnsmith/kk-tire-tvm`.
 ```
+:::
 
 ## Next step
 
