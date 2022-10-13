@@ -15,9 +15,11 @@ author = "Jiawei Liu"
 
 extensions = [
     "myst_parser",
+    "sphinx_design",
     "sphinx.ext.githubpages",
     "sphinx.ext.autosectionlabel",
     "sphinx.ext.intersphinx",
+    "sphinx_copybutton",
 ]
 
 myst_enable_extensions = ["colon_fence"]

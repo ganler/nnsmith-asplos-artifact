@@ -24,11 +24,16 @@ Evaluate the artifact in the fastest way:
 
 - Just run this in a [tmux](https://github.com/tmux/tmux/wiki) session;
 
+:::{dropdown} **Script**
+:open:
+:icon: code
+:color: light
 ```shell
 bash /artifact/eval_nnsmith.sh;      \
 bash /artifact/eval_graphfuzzer.sh;  \
 bash /artifact/eval_lemon.sh
 ```
+:::
 
 - Come back 1.5 days later;
 - Jump to the [result visualization section](viz-sec) to verify the results.
@@ -36,7 +41,7 @@ bash /artifact/eval_lemon.sh
 Or if you want to understand the scripts you are running, you can continue reading the following sub-sections (about 15-min read).
 
 (exp-e1)=
-### E1: Collecting NNSmith coverage
+### E1: NNSmith Coverage
 
 ``````{admonition} E1: Evaluating NNSmith on {tvm, ort} x {base, binning}
 :class: important
@@ -53,15 +58,21 @@ Or if you want to understand the scripts you are running, you can continue readi
     - `nnsmith-tvm-binning/`
     - `nnsmith-ort-base/`
     - `nnsmith-ort-binning/`
-- **Script**:
+
+:::{dropdown} **Script**
+:open:
+:icon: code
+:color: light
 ```shell
 cd /artifact # In the container
 bash eval_nnsmith.sh
 ```
+:::
+
 ``````
 
 (exp-e2)=
-### E2: Collecting GraphFuzzer coverage
+### E2: GraphFuzzer Coverage
 
 
 ``````{admonition} E2: Evaluating GraphFuzzer on {tvm, ort}
@@ -75,21 +86,27 @@ bash eval_nnsmith.sh
 - **Outputs** (will be used in [visualization section](viz-sec)):
     - `graphfuzzer-tvm/`
     - `graphfuzzer-ort/`
-- **Script**:
+
+:::{dropdown} **Script**
+:open:
+:icon: code
+:color: light
 ```shell
 cd /artifact # In the container
 bash eval_graphfuzzer.sh
 ```
+:::
 ``````
 
 (exp-e3)=
-### E3: Collecting LEMON coverage
+### E3: LEMON Coverage
 
 ``````{admonition} E3: Evaluate LEMON on {tvm, ort}
 :class: important
 
-```{admonition} **Pre-built LEMON models**
-:class: caution
+```{dropdown} **Pre-generated LEMON models**
+:color: warning
+:icon: unlock
 
 Evaluating LEMON in NNSmith's setting is very complicated ([why?](gen-lemon)).
 For reviewers' convenience, the LEMON models are pre-generated and pre-converted (see `-v /data/artifact:/...` in the [docker command](org-setup)).
@@ -98,9 +115,8 @@ For reviewers' convenience, the LEMON models are pre-generated and pre-converted
 ```{admonition} **This section is *only* available for the *original* test-bed**
 :class: warning
 
-The following scripts won't work on *your own machine* due the absence of pre-generated models.
-You need a couple of complicated [steps](gen-lemon) to make it work.
-Meanwhile, you might skip LEMON as it is not a mandatory baseline for NNSmith.
+This section won't work out of the box if you are working on <u>your own machine</u>.
+Some complicated [steps](gen-lemon) are needed to generate LEMON models, but you might skip it as it's not a mandatory baseline for NNSmith.
 ```
 
 - **Fuzzer type**: LEMON;
@@ -111,18 +127,25 @@ Meanwhile, you might skip LEMON as it is not a mandatory baseline for NNSmith.
 - **Outputs** (will be used in [visualization section](viz-sec)):
     - `lemon-tvm/`
     - `lemon-ort/`
-- **Script**:
+
+:::{dropdown} **Script**
+:open:
+:icon: code
+:color: light
 ```shell
 cd /artifact # In the container
 bash eval_lemon.sh
 ```
+:::
 ``````
 
 (viz-sec)=
 ## Visualizing and understanding results
 
-```{admonition} Randomness in Experiments
-:class: caution
+```{dropdown} Randomness in Experiments
+:color: warning
+:icon: alert
+
 Note that there will be randomness in fuzzing given different system performance and random seeds.
 This means detailed reproduced data might not be strictly equivalent to that presented in the paper, but the overall trend should be consistent in the long run (say 4 hours).
 ```

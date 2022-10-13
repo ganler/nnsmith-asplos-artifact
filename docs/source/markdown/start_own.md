@@ -6,25 +6,25 @@
 1. **OS:** A Linux System with [Docker](https://docs.docker.com/get-docker/) Support;
 2. **Hardware:** X86 CPU; 16GB RAM; 512GB Storage; Good Network to [GitHub](https://github.com/) and [Docker Hub](https://hub.docker.com/);
 
-```{warning} **Avoid super-multi-core test-bed**
+```{admonition} **Warning: Super-multi-core test-bed are not recommended**
+:class: warning
+
 The artifact is based on the exact [version](https://github.com/ise-uiuc/nnsmith/commit/620645967a14d6a7b077cedd9c2c03ed74af50d9) used in our paper,
-where ONNXRuntime might use [all CPU threads](https://github.com/ise-uiuc/nnsmith/blob/620645967a14d6a7b077cedd9c2c03ed74af50d9/nnsmith/backends/ort_graph.py#L37) which could bring troubles on test-bed with very many cores (our test-bed has only 8 cores).
+where ONNXRuntime might use [all CPU cores](https://github.com/ise-uiuc/nnsmith/blob/620645967a14d6a7b077cedd9c2c03ed74af50d9/nnsmith/backends/ort_graph.py#L37) which could bring trouble on servers with very many cores. However, you may alleviate it with `export NNSMITH_CORE=16` or smaller.
 ```
 
 Before you start, please make sure you have [**Docker**](https://docs.docker.com/engine/install/) installed.
 ```bash
-# Test docker availability
-docker --version
-# Output looks like: (no error)
+docker --version # Test docker availability
 # Docker version 20.10.12, build e91ed5707e
 ```
 Otherwise please follow the [**installation page**](https://docs.docker.com/engine/install/) of Docker.
 `````
 
 ``````{note}
-The experiements could take more than one day, it is recommended to open a tmux session to start it in the background and come back when the experiments are finished.
+The experiements could run over **one day**, it is recommended to open a `tmux` session to start it in the background and come back when the experiments are finished.
 
-Create a tmux session.
+Create a `tmux` session.
 ```bash
 tmux new -s nnsmith-artifact   # create a tmux session.
 ```
