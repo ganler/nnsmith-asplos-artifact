@@ -1,10 +1,10 @@
 FROM ubuntu:20.04
 
-RUN apt update --allow-unauthenticated 
+RUN apt update --allow-unauthenticated
 
 RUN DEBIAN_FRONTEND="noninteractive" apt install -y python3.8-dev python3.8-venv python3-numpy \
     git lz4 lsb-release wget software-properties-common gnupg build-essential \
-    texlive dvipng texlive-latex-extra cm-super texlive-fonts-recommended
+    texlive dvipng texlive-latex-extra cm-super texlive-fonts-recommended graphviz
 
 RUN wget https://apt.llvm.org/llvm.sh && bash llvm.sh 14 && apt update --allow-unauthenticated
 
