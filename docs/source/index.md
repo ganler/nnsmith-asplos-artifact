@@ -5,7 +5,7 @@ We have two evaluation options:
 ``````{admonition} **Option 1: Evaluate on the *original* test-bed**
 :class: tip
 ```{note}
-This is a *special* entry for **ASPLOS AE reviewers** for simplify the AE.
+This is a *special* entry for **ASPLOS AE reviewers** for simplifying the AE.
 ```
 You are welcome to evaluate NNSmith on its **original test-bed** by referring to **[](markdown/start_original.md)**.
 ``````

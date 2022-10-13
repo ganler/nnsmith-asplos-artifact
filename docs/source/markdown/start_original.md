@@ -16,7 +16,7 @@ Dear reviewers, please follow the following steps:
 
 Note the test-bed is located in Illinois, US and you can simply regard the locations above as that of the jump servers. You are recommended to choose the one near to your location for better network connectivity.
 
-Please do not hesitate contacting the author over HotCRP or `jiawei6@illinois.com` for any technical issues.
+Please do not hesitate contacting the author over HotCRP or `jiawei6@illinois.edu` for any technical issues.
 ``````
 
 ``````{note}
@@ -56,4 +56,4 @@ bash kick_tire.sh # 40 seconds
 
 ## Next step
 
-Please go to [](./evaluation.md) for detailed evaluation steps.
+Please go to **[](./evaluation.md)** for detailed evaluation steps.
