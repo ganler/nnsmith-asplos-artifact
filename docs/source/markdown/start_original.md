@@ -42,7 +42,7 @@ To start evaluation:
 
 ```bash
 # Pull docker image from docker hub;
-sudo docker run -it --name ${USER}-nnsmith ganler/nnsmith-asplos23-ae -v /data/ganler-data/lemon-onnx:/artifact/data/lemon-onnx
+sudo docker run -it --name ${USER}-nnsmith -v /data/artifact/:/artifact/data/ ganler/nnsmith-asplos23-ae
 # By using this command, you will "get into" the image like entering a virtual machine.
 # The session will be kept under the name "${USER}-nnsmith"
 

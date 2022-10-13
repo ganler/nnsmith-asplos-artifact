@@ -92,7 +92,7 @@ bash eval_graphfuzzer.sh
 :class: caution
 
 Evaluating LEMON in NNSmith's setting is very complicated ([why?](gen-lemon)).
-For reviewers' convenience, the LEMON models are pre-generated and pre-converted (see `-v /data/ganler-data/...` in the [docker command](org-setup)).
+For reviewers' convenience, the LEMON models are pre-generated and pre-converted (see `-v /data/artifact:/...` in the [docker command](org-setup)).
 ```
 
 ```{admonition} **This section is *only* available for the *original* test-bed**
