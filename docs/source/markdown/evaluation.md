@@ -12,7 +12,7 @@
 We call `ONNXRuntime` as "ORT" for short.
 ```
 
-```{admonition} Expect time cost
+```{admonition} Expected time cost
 :class: tip
 - `28` hour **machine** time;
 - `1` hour **human** time;
@@ -20,7 +20,7 @@ We call `ONNXRuntime` as "ORT" for short.
 
 ### TL;DR
 
-If you want to evaluate the artifact in the fastest way:
+Evaluate the artifact in the fastest way:
 
 - Just run this in a [tmux](https://github.com/tmux/tmux/wiki) session;
 
