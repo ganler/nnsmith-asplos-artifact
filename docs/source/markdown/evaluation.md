@@ -1,4 +1,4 @@
-# Evaluating artifact
+# **Evaluating artifact**
 
 ## Coverage experiments
 
@@ -36,27 +36,27 @@ bash /artifact/eval_lemon.sh
 ```
 :::
 
-- Come back 1.5 days later;
+- Come back 1 day later;
 - Jump to the [result visualization section](viz-sec) to verify the results.
 
 Or if you want to understand the scripts being executed, you can continue reading the following sub-sections ([E1](exp-e1)~[E3](exp-e3)).
 
 (exp-e1)=
-### E1: NNSmith Coverage
+### E1: NNSmith[^nsh] Coverage
+
+[^nsh]: Liu, Jiawei, et al. "NNSmith: Generating Diverse and Valid Test Cases for Deep Learning Compilers." Proceedings of the 28th ACM International Conference on Architectural Support for Programming Languages and Operating Systems. 2023.
 
 ``````{admonition} E1: Evaluating NNSmith on {tvm, ort}
 :class: important
 
-- **Fuzzer type**:
-    - NNSmith base;
-    - NNSmith binning;
+- **Fuzzer type**: NNSmith (with binning);
 - **System under test (SUT)**:
     - TVM (LLVM CPU backend);
     - ONNXRuntime (CPU backend);
 - **Experiment time**: 8 hours;
 - **Outputs** (will be used in [visualization section](viz-sec)):
-    - `nnsmith-tvm-binning/`
-    - `nnsmith-ort-binning/`
+    - `/artifact/nnsmith/nnsmith-tvm-binning/`
+    - `/artifact/nnsmith/nnsmith-ort-binning/`
 
 :::{dropdown} **Script**
 :open:
@@ -88,8 +88,8 @@ The paper by *Luo, Weisi, et al*[^gf] does not give a name to the fuzzer. We cal
     - ONNXRuntime (CPU backend);
 - **Experiment time**: 8 hours;
 - **Outputs** (will be used in [visualization section](viz-sec)):
-    - `graphfuzzer-tvm/`
-    - `graphfuzzer-ort/`
+    - `/artifact/nnsmith/graphfuzzer-tvm/`
+    - `/artifact/nnsmith/graphfuzzer-ort/`
 
 :::{dropdown} **Script**
 :open:
@@ -131,8 +131,8 @@ Some complicated [steps](gen-lemon) are needed to generate LEMON models, but you
     - ONNXRuntime (CPU backend);
 - **Experiment time**: 4 hours;
 - **Outputs** (will be used in [visualization section](viz-sec)):
-    - `lemon-tvm/`
-    - `lemon-ort/`
+    - `/artifact/nnsmith/lemon-tvm/`
+    - `/artifact/nnsmith/lemon-ort/`
 
 :::{dropdown} **Script**
 :open:
@@ -155,3 +155,9 @@ bash eval_lemon.sh
 Note that there will be randomness in fuzzing given different system performance and random seeds.
 This means detailed reproduced data might not be strictly equivalent to that presented in the paper, but the overall trend should be consistent in the long run (say 4 hours).
 ```
+
+TBD;
+
+## Read more
+
+You may further refer to [](./faq.md) for potential questions and extra/non-main experiments.
