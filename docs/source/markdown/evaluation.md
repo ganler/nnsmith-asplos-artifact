@@ -71,7 +71,7 @@ bash eval_nnsmith.sh
 - **System under test (SUT)**:
     - TVM (LLVM CPU backend);
     - ONNXRuntime (CPU backend);
-- **Experiment time**: 11 hours;
+- **Experiment time**: 8 hours;
 - **Outputs** (will be used in [visualization section](viz-sec)):
     - `graphfuzzer-tvm/`
     - `graphfuzzer-ort/`
@@ -88,11 +88,20 @@ bash eval_graphfuzzer.sh
 ``````{admonition} E3: Evaluate LEMON on {tvm, ort}
 :class: important
 
+```{warning} **Pre-built LEMON models.**
+Building and runnning LEMON is very complicated and storage-intensive (extra docker images plus a couple of dirty fixes, up to hundreds of gigabytes storage consumption, etc.).
+For the reviewer's convenience, the LEMON models are pre-generated and pre-converted.
+However, this is **only** available on the **original test-bed**.
+That said, if you are running the artifact on your own machine, the following scripts won't work.
+It might be fine to skip LEMON as it is not a mandatory baseline for NNSmith.
+Nevertheless, check some [detailed steps](gen-lemon) if you want to try.
+```
+
 - **Fuzzer type**: LEMON;
 - **System under test (SUT)**:
     - TVM (LLVM CPU backend);
     - ONNXRuntime (CPU backend);
-- **Experiment time**: up-to 5 hours;
+- **Experiment time**: up-to 4 hours;
 - **Outputs** (will be used in [visualization section](viz-sec)):
     - `lemon-tvm/`
     - `lemon-ort/`
@@ -100,11 +109,6 @@ bash eval_graphfuzzer.sh
 ```shell
 cd /artifact # In the container
 bash eval_lemon.sh
-```
-
-```{warning} **Pre-built LEMON models.**
-Due to the complexity and intensive storage cost of running LEMON, the LEMON models are pre-generated and pre-converted for convenience.
-The scripts above are evaluating the models offline to get coverage.
 ```
 ``````
 

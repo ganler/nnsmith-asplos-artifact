@@ -14,10 +14,10 @@ author = "Jiawei Liu"
 # https://www.sphinx-doc.org/en/master/usage/configuration.html#general-configuration
 
 extensions = [
+    "myst_parser",
     "sphinx.ext.githubpages",
     "sphinx.ext.autosectionlabel",
     "sphinx.ext.intersphinx",
-    "myst_parser",
 ]
 
 myst_enable_extensions = ["colon_fence"]
