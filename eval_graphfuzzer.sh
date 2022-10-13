@@ -3,6 +3,7 @@
 set -e
 set -x
 
+source "$(dirname "$0")"/env.sh
 cd "$(dirname "$0")"/nnsmith || exit 1
 DATA_DRIVE="$(pwd)/../data"
 export DATA_DRIVE
@@ -14,7 +15,7 @@ export TVM_TIME_BUDGET=3600  # TVM evaluation time is way slower than generation
 export ORT_TIME_BUDGET=12000 # ORT evaluation is fast so we should be conservative.
 
 # Remove old coverage files
-rm default.profraw
+[ -f default.profraw ] && rm default.profraw
 # Make sure TVM/ORT dtype support config file is generated.
 python3 nnsmith/dtype_test.py --cache config/ort_cpu_dtype.pkl
 # TVM

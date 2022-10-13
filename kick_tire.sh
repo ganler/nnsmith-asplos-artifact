@@ -3,6 +3,7 @@
 set -e
 set -x
 
+source "$(dirname "$0")"/env.sh
 cd "$(dirname "$0")"/nnsmith
 
 NNSMITH_DCE=0.1 LIB_PATH="$(pwd)/../sut/tvm/build/libtvm.so $(pwd)/../sut/tvm/build/libtvm_runtime.so" \

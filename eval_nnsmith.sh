@@ -8,7 +8,7 @@ set -x
 # ====================================
 # This file will run NNSmith:
 # on       TVM & ORT
-#              x 
+#              x
 # with binning & random modes.
 # (`guided` means `binning`)
 # (`random` means `without binning`)
@@ -22,11 +22,12 @@ set -x
 
 export NNSMITH_DCE=0.1
 
+source "$(dirname "$0")"/env.sh
 cd "$(dirname "$0")"/nnsmith || exit 1
 # Also see: https://github.com/ise-uiuc/nnsmith/blob/620645967a14d6a7b077cedd9c2c03ed74af50d9/README.md#coverage-evaluation
 
 # Remove old coverage files
-rm default.profraw
+[ -f default.profraw ] && rm default.profraw
 # Make sure TVM/ORT dtype support config file is generated.
 python3 nnsmith/dtype_test.py --cache config/ort_cpu_dtype.pkl
 

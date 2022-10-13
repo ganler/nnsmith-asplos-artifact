@@ -1,5 +1,6 @@
 #!/bin/bash
 
+source "$(dirname "$0")"/../env.sh
 cd "$(dirname "$0")" || exit 1
 # check clang-14
 if ! command -v clang++-14 &> /dev/null; then
