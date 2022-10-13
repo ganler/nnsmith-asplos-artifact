@@ -8,6 +8,9 @@ cd "$(dirname "$0")"/nnsmith || exit 1
 LEMON_ONNX="$(pwd)/../data/lemon-onnx"
 export LEMON_ONNX
 
+# skip if not exists
+[ -d "$LEMON_ONNX" ] || echo "Skip evaluating LEMON as $LEMON_ONNX is not available" && exit 0
+
 # Remove old coverage files
 rm default.profraw
 

@@ -14,7 +14,7 @@ We call `ONNXRuntime` as "ORT" for short.
 
 ```{admonition} Expect time cost
 :class: tip
-- `32` hour **machine** time;
+- `28` hour **machine** time;
 - `1` hour **human** time;
 ```
 
@@ -26,8 +26,8 @@ If you want to evaluate the artifact in the fastest way:
 
 ```shell
 bash artifact/eval_nnsmith.sh      # 16hr
-bash artifact/eval_graphfuzzer.sh  # 11hr
-bash artifact/eval_lemon.sh        # 5hr
+bash artifact/eval_graphfuzzer.sh  # 8hr
+bash artifact/eval_lemon.sh        # 4hr
 ```
 
 - Come back 1.5 days later;
@@ -88,20 +88,26 @@ bash eval_graphfuzzer.sh
 ``````{admonition} E3: Evaluate LEMON on {tvm, ort}
 :class: important
 
-```{warning} **Pre-built LEMON models.**
-Building and runnning LEMON is very complicated and storage-intensive (extra docker images plus a couple of dirty fixes, up to hundreds of gigabytes storage consumption, etc.).
-For the reviewer's convenience, the LEMON models are pre-generated and pre-converted.
-However, this is **only** available on the **original test-bed**.
-That said, if you are running the artifact on your own machine, the following scripts won't work.
-It might be fine to skip LEMON as it is not a mandatory baseline for NNSmith.
-Nevertheless, check some [detailed steps](gen-lemon) if you want to try.
+```{admonition} **Pre-built LEMON models**
+:class: caution
+
+Evaluating LEMON in NNSmith's setting is very complicated ([why?](gen-lemon)).
+For reviewers' convenience, the LEMON models are pre-generated and pre-converted (see `-v /data/ganler-data/...` in the [docker command](org-setup)).
+```
+
+```{admonition} **This section is *only* available for the *original* test-bed**
+:class: warning
+
+The following scripts won't work on *your own machine* due the absence of pre-generated models.
+You need a couple of complicated [steps](gen-lemon) to make it work.
+Meanwhile, you might skip LEMON as it is not a mandatory baseline for NNSmith.
 ```
 
 - **Fuzzer type**: LEMON;
 - **System under test (SUT)**:
     - TVM (LLVM CPU backend);
     - ONNXRuntime (CPU backend);
-- **Experiment time**: up-to 4 hours;
+- **Experiment time**: 4 hours;
 - **Outputs** (will be used in [visualization section](viz-sec)):
     - `lemon-tvm/`
     - `lemon-ort/`
