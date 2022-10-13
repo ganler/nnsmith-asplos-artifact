@@ -6,13 +6,13 @@ set -x
 # ====================================
 # It can take 4 x 4 = 8 hours to run.
 # ====================================
-# This file will run NNSmith-binning:
+# This file will run NNSmith-base:
 # on       TVM & ORT
-# (`guided` means `binning`)
+# (`random` means `base`)
 # ====================================
 # Output:
-#  - `nnsmith-tvm-binning/`
-#  - `nnsmith-ort-binning/`
+#  - `nnsmith-tvm-base/`
+#  - `nnsmith-ort-base/`
 # ====================================
 
 export NNSMITH_DCE=0.1
@@ -33,7 +33,7 @@ LIB_PATH="$(pwd)/../sut/tvm/build/libtvm.so $(pwd)/../sut/tvm/build/libtvm_runti
 export LIB_PATH
 start_time=$(date +%s)
 python3 nnsmith/fuzz.py --time 14400 --max_nodes 10 --eval_freq 256 \
-                --mode guided --backend tvm --root nnsmith-tvm-binning
+                --mode random --backend tvm --root nnsmith-tvm-base
 exp0_t=$(($(date +%s) - start_time))
 
 # ONNXRuntime.
@@ -42,10 +42,10 @@ export LIB_PATH
 
 start_time=$(date +%s)
 python3 nnsmith/fuzz.py --time 14400 --max_nodes 10 --eval_freq 256 \
-                --mode guided --backend ort --root nnsmith-ort-binning
+                --mode random --backend ort --root nnsmith-ort-base
 exp1_t=$(($(date +%s) - start_time))
 
 echo "Experiment time of last 4 runs: '$exp0_t','$exp1_t' seconds."
 
 echo "Merging coverage..."
-python3 experiments/cov_merge.py -f nnsmith-tvm-binning nnsmith-ort-binning
+python3 experiments/cov_merge.py -f nnsmith-tvm-base nnsmith-ort-base

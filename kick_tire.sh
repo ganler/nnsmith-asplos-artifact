@@ -3,6 +3,7 @@
 set -e
 set -x
 
+# shellcheck source=/dev/null
 source "$(dirname "$0")"/env.sh
 cd "$(dirname "$0")"/nnsmith
 

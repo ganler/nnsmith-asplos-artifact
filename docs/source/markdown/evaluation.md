@@ -2,20 +2,21 @@
 
 ## Coverage experiments
 
-| Experiment ID | NNSmith[base]      | NNSmith[binning]   | GraphFuzzer        | LEMON              |
-| ------------- | ------------------ | ------------------ | ------------------ | ------------------ |
-| TVM           | [E1](exp-e1) (4hr) | [E1](exp-e1) (4hr) | [E2 ](exp-e2)(4hr) | [E3](exp-e3) (2hr) |
-| ONNXRuntime   | [E1](exp-e1) (4hr) | [E1](exp-e1) (4hr) | [E2](exp-e2) (4hr) | [E3](exp-e3) (2hr) |
-
-
-```{note}
-We call `ONNXRuntime` as "ORT" for short.
-```
+We will go through the main experiments corresponding to Section 5.2 in the paper, which evaluates end-to-end coverage efficiency of NNSmith and baselines.
 
 ```{admonition} Expected time cost
 :class: tip
-- `28` hour **machine** time;
+- `20` hour **machine** time;
 - `1` hour **human** time;
+```
+
+| Experiment ID | NNSmith[binning]   | GraphFuzzer        | LEMON              |
+| ------------- | ------------------ | ------------------ | ------------------ |
+| TVM           | [E1](exp-e1) (4hr) | [E2 ](exp-e2)(4hr) | [E3](exp-e3) (2hr) |
+| ONNXRuntime   | [E1](exp-e1) (4hr) | [E2](exp-e2) (4hr) | [E3](exp-e3) (2hr) |
+
+```{note}
+We call `ONNXRuntime` as "ort" for short.
 ```
 
 ### TL;DR
@@ -38,12 +39,12 @@ bash /artifact/eval_lemon.sh
 - Come back 1.5 days later;
 - Jump to the [result visualization section](viz-sec) to verify the results.
 
-Or if you want to understand the scripts you are running, you can continue reading the following sub-sections (about 15-min read).
+Or if you want to understand the scripts being executed, you can continue reading the following sub-sections ([E1](exp-e1)~[E3](exp-e3)).
 
 (exp-e1)=
 ### E1: NNSmith Coverage
 
-``````{admonition} E1: Evaluating NNSmith on {tvm, ort} x {base, binning}
+``````{admonition} E1: Evaluating NNSmith on {tvm, ort}
 :class: important
 
 - **Fuzzer type**:
@@ -52,11 +53,9 @@ Or if you want to understand the scripts you are running, you can continue readi
 - **System under test (SUT)**:
     - TVM (LLVM CPU backend);
     - ONNXRuntime (CPU backend);
-- **Experiment time**: 16 hours;
+- **Experiment time**: 8 hours;
 - **Outputs** (will be used in [visualization section](viz-sec)):
-    - `nnsmith-tvm-base/`
     - `nnsmith-tvm-binning/`
-    - `nnsmith-ort-base/`
     - `nnsmith-ort-binning/`
 
 :::{dropdown} **Script**
@@ -72,8 +71,13 @@ bash eval_nnsmith.sh
 ``````
 
 (exp-e2)=
-### E2: GraphFuzzer Coverage
+### E2: GraphFuzzer[^gf] Coverage
 
+```{dropdown} "*GraphFuzzer*" (..huh?)
+The paper by *Luo, Weisi, et al*[^gf] does not give a name to the fuzzer. We call it "*GraphFuzzer*" for convenience.
+```
+
+[^gf]: Luo, Weisi, et al. "Graph-based fuzz testing for deep learning inference engines." 2021 IEEE/ACM 43rd International Conference on Software Engineering (ICSE). IEEE, 2021.
 
 ``````{admonition} E2: Evaluating GraphFuzzer on {tvm, ort}
 :class: important
@@ -99,7 +103,9 @@ bash eval_graphfuzzer.sh
 ``````
 
 (exp-e3)=
-### E3: LEMON Coverage
+### E3: LEMON[^lm] Coverage
+
+[^lm]: Wang, Zan, et al. "Deep learning library testing via effective model generation." Proceedings of the 28th ACM Joint Meeting on European Software Engineering Conference and Symposium on the Foundations of Software Engineering. 2020.
 
 ``````{admonition} E3: Evaluate LEMON on {tvm, ort}
 :class: important

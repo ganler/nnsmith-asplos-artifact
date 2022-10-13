@@ -23,7 +23,7 @@ Please do not hesitate contacting the author over HotCRP or `jiawei6@illinois.ed
 :color: info
 :icon: unlock
 
-The experiements could run over **one day**, it is recommended to open a `tmux` session to start it in the background and come back when the experiments are finished.
+The experiements could take **one day**, it is recommended to open a `tmux` session to start it in the background and come back when the experiments are finished.
 
 Create a tmux session.
 ```bash
