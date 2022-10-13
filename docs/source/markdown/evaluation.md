@@ -2,10 +2,10 @@
 
 ## Coverage experiments
 
-| Experiment ID | NNSmith[base] | NNSmith[binning] | GraphFuzzer  | LEMON        |
-| ------------- | ------------- | ---------------- | ------------ | ------------ |
-| TVM           | [E1](exp-e1)  | [E1](exp-e1)     | [E2](exp-e2) | [E3](exp-e3) |
-| ONNXRuntime   | [E1](exp-e1)  | [E1](exp-e1)     | [E2](exp-e2) | [E3](exp-e3) |
+| Experiment ID | NNSmith[base]      | NNSmith[binning]   | GraphFuzzer        | LEMON              |
+| ------------- | ------------------ | ------------------ | ------------------ | ------------------ |
+| TVM           | [E1](exp-e1) (4hr) | [E1](exp-e1) (4hr) | [E2 ](exp-e2)(4hr) | [E3](exp-e3) (2hr) |
+| ONNXRuntime   | [E1](exp-e1) (4hr) | [E1](exp-e1) (4hr) | [E2](exp-e2) (4hr) | [E3](exp-e3) (2hr) |
 
 
 ```{note}
@@ -25,9 +25,9 @@ Evaluate the artifact in the fastest way:
 - Just run this in a [tmux](https://github.com/tmux/tmux/wiki) session;
 
 ```shell
-bash /artifact/eval_nnsmith.sh      # 16hr
-bash /artifact/eval_graphfuzzer.sh  # 8hr
-bash /artifact/eval_lemon.sh        # 4hr
+bash /artifact/eval_nnsmith.sh;      \
+bash /artifact/eval_graphfuzzer.sh;  \
+bash /artifact/eval_lemon.sh
 ```
 
 - Come back 1.5 days later;

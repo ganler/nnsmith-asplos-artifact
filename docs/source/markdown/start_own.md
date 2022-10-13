@@ -8,7 +8,7 @@
 
 ```{warning} **Avoid super-multi-core test-bed**
 The artifact is based on the exact [version](https://github.com/ise-uiuc/nnsmith/commit/620645967a14d6a7b077cedd9c2c03ed74af50d9) used in our paper,
-where ONNXRuntime might use [all CPU threads](https://github.com/ise-uiuc/nnsmith/blob/620645967a14d6a7b077cedd9c2c03ed74af50d9/nnsmith/backends/ort_graph.py#L37) which could bring troubles on test-bed with very many cores (our test-bed has only 8 cores). 
+where ONNXRuntime might use [all CPU threads](https://github.com/ise-uiuc/nnsmith/blob/620645967a14d6a7b077cedd9c2c03ed74af50d9/nnsmith/backends/ort_graph.py#L37) which could bring troubles on test-bed with very many cores (our test-bed has only 8 cores).
 ```
 
 Before you start, please make sure you have [**Docker**](https://docs.docker.com/engine/install/) installed.
@@ -53,6 +53,7 @@ git pull
 source env.sh     # Use a virtual environment
 bash kick_tire.sh # 40 seconds
 # Running NNSmith fuzzing 20 seconds for each of tvm and onnxruntime.
+# It generates bug reports (if any) in `/artifact/nnsmith/kk-tire-ort` and `/artifact/nnsmith/kk-tire-tvm`.
 ```
 
 ## Next step
