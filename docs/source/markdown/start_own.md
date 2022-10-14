@@ -43,6 +43,25 @@ tmux at -t nnsmith-artifact
 ```
 ``````
 
+````{dropdown} **Install/Import the image!**
+:open:
+:icon: code
+
+To directly install from [Docker Hub](https://hub.docker.com/r/ganler/nnsmith-asplos23-ae):
+```shell
+docker pull ganler/nnsmith-asplos23-ae
+```
+
+To import the image from Zenodo archive:
+
+```shell
+tar xf NNSmith-ASPLOS23-Artifact.tar.gz
+export NNSMITH_DOCKER=ganler/nnsmith-asplos23-ae:latest
+cat nnsmith-ae.tar | docker import - $NNSMITH_DOCKER
+```
+
+````
+
 :::{dropdown} **Kick the tire!**
 :open:
 :icon: code

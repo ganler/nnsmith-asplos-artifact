@@ -162,13 +162,15 @@ bash experiments/input_search_exp.sh 10
 bash experiments/input_search_exp.sh 20
 bash experiments/input_search_exp.sh 30
 
-git checkout 620645967a14d6a7b077cedd9c2c03ed74af50d9 # going back
-
 # visualization
+git checkout 5873a77734e25868912219d853dfc6bc0a210ace # going to the visualization commit
+mkdir -p gradient
 python experiments/plot_inp_search_merge.py --output gradient            \
                                             --root 512-model-10-node-exp \
                                                    512-model-20-node-exp \
                                                    512-model-30-node-exp
+
+git checkout 620645967a14d6a7b077cedd9c2c03ed74af50d9 # going back
 ```
 :::
 ``````
@@ -187,6 +189,21 @@ First you need to temporarily leave the current container, there are three ways 
 # Now in the local environment
 docker cp ${USER}-nnsmith:/artifact/nnsmith/gradient . # copy gradient results to local folder `gradient`
 ```
+````
+
+
+````{admonition} **Figure 11: Effectiveness of gradient-based search**
+:class: tip
+
+```{figure} ../img/input-search-merge.png
+---
+scale: 75%
+name: f11
+---
+Figure 11 \
+See `./gradient/input-search-merge.png`
+```
+
 ````
 
 (gen-lemon)=
@@ -257,4 +274,4 @@ Now you can go back to [](exp-e3) to continue evaluating LEMON.
 In this artifact, we elaborated the main experiments ([](./evaluation.md)) and extra experiments ([](exp-extra)) in the paper.
 There is, honestly, still a few more experiments such as Figure 8 and Figure 9. 
 They are not included in the artifact due to their minor importance and the cost of time (e.g., Figure 9 requires re-running the coverage experiments again in another setting which could take another day) & computing resources.
-Nevertheless, feel free to contact the artifact author if you are interested in these experiments and the artifact author will setup them on demand.
+Nevertheless, feel free to contact the artifact author over HotCRP if you are interested in these experiments and the artifact author will setup them on demand.

@@ -1,5 +1,13 @@
 # **Evaluating artifact**
 
+## Evidence of bug finding
+
+In our paper, we claimed that (in the abstract):
+
+> ... has found 65 new bugs in the last seven months for TVM, TensorRT, ONNXRuntime, and PyTorch.
+
+You can find the evidence in our [bug finding table](https://docs.google.com/spreadsheets/d/1gzMPlY0sOfyVBGhq9CPkynDnuVpiGm7JpFQ-CPoLStc/edit#gid=0).
+
 ## Coverage experiments
 
 We will go through the main experiments corresponding to Section 5.2 in the paper, which evaluates end-to-end coverage efficiency of NNSmith and baselines.
