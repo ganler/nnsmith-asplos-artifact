@@ -1,11 +1,10 @@
 #!/bin/bash
 
-cd "$(dirname "$0")" || exit 1
-[ -d "$(pwd)/venv" ] || python3 -m venv "$(pwd)/venv"
+[ -d "$(dirname "$0")/venv" ] || python3 -m venv "$(dirname "$0")/venv"
 activate () {
     # shellcheck source=/dev/null
-    . "$(pwd)/venv/bin/activate"
-    PYTHONPATH="$(pwd)/sut/tvm/python:$(pwd)/nnsmith:$PYTHONPATH"
+    . "$(dirname "$0")/venv/bin/activate"
+    PYTHONPATH="$(dirname "$0")/sut/tvm/python:$(dirname "$0")/nnsmith:$PYTHONPATH"
     export PYTHONPATH
 }
 
