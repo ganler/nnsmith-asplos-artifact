@@ -19,7 +19,7 @@ if [ -d "$LEMON_ONNX_DIR" ]; then
                                         --output tvm-cov
     # ORT coverage.
     python experiments/viz_merged_cov.py --folders lemon-ort graphfuzzer-ort nnsmith-ort-binning --ort \
-                                        --tags 'LEMON' 'NNSmith' 'GraphFuzzer' --venn \
+                                        --tags 'LEMON' 'GraphFuzzer' 'NNSmith' --venn \
                                         --output ort-cov
 else
     echo "$LEMON_ONNX_DIR not found. Skiping LEMON baseline in visualization."
