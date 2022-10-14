@@ -14,22 +14,22 @@ git checkout 5873a77734e25868912219d853dfc6bc0a210ace
 if [ -d "$LEMON_ONNX_DIR" ]; then
     echo "$LEMON_ONNX_DIR found. Taking LEMON baseline into visualization."
     # TVM coverage.
-    python experiments/viz_merged_cov.py --folders nnsmith-tvm-binning graphfuzzer-tvm lemon-tvm --tvm \
-                                        --tags 'NNSmith' 'GraphFuzzer' 'LEMON' --venn \
+    python experiments/viz_merged_cov.py --folders lemon-tvm graphfuzzer-tvm nnsmith-tvm-binning --tvm \
+                                        --tags 'LEMON' 'GraphFuzzer' 'NNSmith' --venn \
                                         --output tvm-cov
     # ORT coverage.
-    python experiments/viz_merged_cov.py --folders nnsmith-ort-binning graphfuzzer-ort lemon-ort --ort \
-                                        --tags 'NNSmith' 'GraphFuzzer' 'LEMON' --venn \
+    python experiments/viz_merged_cov.py --folders lemon-ort graphfuzzer-ort nnsmith-ort-binning --ort \
+                                        --tags 'LEMON' 'NNSmith' 'GraphFuzzer' --venn \
                                         --output ort-cov
 else
     echo "$LEMON_ONNX_DIR not found. Skiping LEMON baseline in visualization."
     # TVM coverage.
-    python experiments/viz_merged_cov.py --folders nnsmith-tvm-binning graphfuzzer-tvm --tvm \
-                                        --tags 'NNSmith' 'GraphFuzzer' --venn \
+    python experiments/viz_merged_cov.py --folders graphfuzzer-tvm nnsmith-tvm-binning --tvm \
+                                        --tags 'GraphFuzzer' 'NNSmith' --venn \
                                         --output tvm-cov
     # ORT coverage.
-    python experiments/viz_merged_cov.py --folders nnsmith-ort-binning graphfuzzer-ort --ort \
-                                        --tags 'NNSmith' 'GraphFuzzer' --venn \
+    python experiments/viz_merged_cov.py --folders graphfuzzer-ort nnsmith-ort-binning --ort \
+                                        --tags 'GraphFuzzer' 'NNSmith' --venn \
                                         --output ort-cov
 fi
 
