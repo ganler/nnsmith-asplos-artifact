@@ -2,7 +2,7 @@
 
 ## Setup and Kick the tire
 
-`````{admonition} Prerequisites
+`````{admonition} **Prerequisites**
 1. **OS:** A Linux System with [Docker](https://docs.docker.com/get-docker/) Support;
 2. **Hardware:** X86 CPU; 16GB RAM; 512GB Storage; Good Network to [GitHub](https://github.com/) and [Docker Hub](https://hub.docker.com/);
 

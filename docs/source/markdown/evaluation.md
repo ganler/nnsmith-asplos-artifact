@@ -6,13 +6,13 @@ We will go through the main experiments corresponding to Section 5.2 in the pape
 
 ```{admonition} Expected time cost
 :class: tip
-- `20` hour **machine** time;
-- `1` hour **human** time;
+- `20` hours **machine** time;
+- `<1` hour **human** time;
 ```
 
-| Experiment ID | NNSmith[binning]   | GraphFuzzer        | LEMON              |
+| Experiment ID | NNSmith[^nsh]      | GraphFuzzer[^gf]   | LEMON[^lm]         |
 | ------------- | ------------------ | ------------------ | ------------------ |
-| TVM           | [E1](exp-e1) (4hr) | [E2 ](exp-e2)(4hr) | [E3](exp-e3) (2hr) |
+| TVM           | [E1](exp-e1) (4hr) | [E2](exp-e2) (4hr) | [E3](exp-e3) (2hr) |
 | ONNXRuntime   | [E1](exp-e1) (4hr) | [E2](exp-e2) (4hr) | [E3](exp-e3) (2hr) |
 
 ```{note}
@@ -110,7 +110,7 @@ bash eval_graphfuzzer.sh
 ``````{admonition} E3: Evaluate LEMON on {tvm, ort}
 :class: important
 
-```{dropdown} **Pre-generated LEMON models**
+```{dropdown} Pre-generated LEMON models
 :color: warning
 :icon: unlock
 
@@ -156,7 +156,83 @@ Note that there will be randomness in fuzzing given different system performance
 This means detailed reproduced data might not be strictly equivalent to that presented in the paper, but the overall trend should be consistent in the long run (say 4 hours).
 ```
 
-TBD;
+:::{dropdown} **Visualizing coverage**
+:open:
+:icon: code
+:color: light
+
+Run the following scripts to generate images in `/artifact/tvm-cov` and `/artifact/ort-cov`.
+
+```shell
+# In the container
+source /artifact/env.sh
+cd /artifact/nnsmith
+# Go to tag which uses the exact plotting scripts.
+git checkout 5873a77734e25868912219d853dfc6bc0a210ace
+# TVM coverage.
+python experiments/viz_merged_cov.py --folders nnsmith-tvm-binning graphfuzzer-tvm lemon-tvm --tvm \
+                                     --tags 'NNSmith' 'GraphFuzzer' 'LEMON' --venn \
+                                     --output tvm-cov
+# ORT coverage.
+python experiments/viz_merged_cov.py --folders nnsmith-ort-binning graphfuzzer-ort lemon-ort --ort \
+                                     --tags 'NNSmith' 'GraphFuzzer' 'LEMON' --venn \
+                                     --output ort-cov
+# Go back.
+git checkout 620645967a14d6a7b077cedd9c2c03ed74af50d9
+```
+:::
+
+``````{admonition} Check the results
+:class: important
+
+The image results are still in the docker container, we need pull those images out of it to see how they look like.
+
+````{dropdown} **Get image outputs from docker to local**
+:open:
+:icon: code
+:color: light
+
+First you need to temporarily leave the current container, there are three ways to do it:
+1. **TMUX**: `ctr + b` then `d`;
+2. **Local (recommended)**: just open a new terminal on the machine which is by default out of the container;
+3. **Local**: type `exit` to exit the container environment (later you can resume the container with `docker start -i ${USER}-nnsmith`);
+
+```shell
+# Now in the local environment
+docker cp ${USER}-nnsmith:/artifact/nnsmith/tvm-cov . # copy TVM results to local folder `tvm-cov`
+docker cp ${USER}-nnsmith:/artifact/nnsmith/ort-cov . # copy ORT results to local folder `ort-cov`
+```
+````
+
+Now let's check the results corresponding to figures in the paper:
+
+```{admonition} **Figure 4**
+:class: tip
+- Figure 4.(a): `./ort-cov/ort_branch_cov-time.png`;
+- Figure 4.(b): `./tvm-cov/tvm_branch_cov-time.png`;
+```
+
+```{admonition} **Figure 5**
+:class: tip
+- Figure 5.(a): `./ort-cov/ort_branch_cov-iter.png`;
+- Figure 5.(b): `./tvm-cov/tvm_branch_cov-iter.png`;
+```
+
+```{admonition} **Figure 6**
+:class: tip
+- Figure 6.(a): `./ort-cov/ort_opt_branch_cov-time.png`;
+- Figure 6.(b): `./tvm-cov/tvm_opt_branch_cov-time.png`;
+```
+
+```{admonition} **Figure 7**
+:class: tip
+- Figure 7.(a): `./ort-cov/ort_br_cov_venn.png`;
+- Figure 7.(b): `./tvm-cov/tvm_br_cov_venn.png`;
+```
+
+``````
+
+Congratulations! You have successfully finished the main experiments of NNSmith!!! 🎉🎉🎉
 
 ## Read more
 

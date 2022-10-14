@@ -15,7 +15,7 @@ You are welcome to evaluate NNSmith on its **original test-bed** by referring to
 To evaluate NNSmith **on your own setting**, please start with **[](markdown/start_own.md)**.
 ```
 
-```{admonition} Bug report links!
+```{admonition} **Bug report links!**
 :class: important
 Don't forget to check our [**real-world bug report links**](https://docs.google.com/spreadsheets/d/1gzMPlY0sOfyVBGhq9CPkynDnuVpiGm7JpFQ-CPoLStc/edit#gid=0).
 ```

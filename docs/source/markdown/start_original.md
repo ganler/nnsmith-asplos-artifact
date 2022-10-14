@@ -3,7 +3,7 @@
 (org-setup)=
 ## Setup & Kick the tire
 
-``````{admonition} Access the original test-bed
+``````{admonition} **Access the original test-bed**
 :class: important
 
 Dear reviewers, please follow the following steps:
