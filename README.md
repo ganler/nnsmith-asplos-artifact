@@ -1,8 +1,9 @@
-# Welcome to NNSmith Artifact Evaluation for ASPLOS'23!
+# Welcome to Artifact Evaluation for NNSmith (ASPLOS'23)!
 
-1. Evidence of [bug finding](https://docs.google.com/spreadsheets/d/1gzMPlY0sOfyVBGhq9CPkynDnuVpiGm7JpFQ-CPoLStc/edit?usp=sharing)!
-2. Artifact entry for ASPLOS'23 reviewers to run NNSmith on the original test-bed.
-3. Artifact entry for anyone to run NNSmith anywhere.
+Please find the online version of the artifact for the best reading experience:
+
+1. [nnsmith-asplos.rtfd.io](nnsmith-asplos.rtfd.io)
+2. or [https://ganler.github.io/nnsmith-asplos-artifact/](https://ganler.github.io/nnsmith-asplos-artifact/)
 
 Contact Jiawei for any questions: jiawei6@illinois.edu
 
