@@ -1,6 +1,5 @@
 # **Read more**
 
-(faq)=
 ## FAQ
 
 ### I cannot use docker after installation
@@ -30,7 +29,7 @@ You are encouraged to use this artifact to reflect the implementation of our ASP
 
 ### EX1: NNSmith-base coverage (Section 5.3 ablation study)
 
-``````{admonition} E1: Evaluating NNSmith base (binning disabled) on {tvm, ort}
+``````{admonition} EX1: Evaluating NNSmith base (binning disabled) on {tvm, ort}
 :class: important
 
 - **Fuzzer type**: NNSmith base (without binning);
@@ -38,7 +37,7 @@ You are encouraged to use this artifact to reflect the implementation of our ASP
     - TVM (LLVM CPU backend);
     - ONNXRuntime (CPU backend);
 - **Experiment time**: 8 hours;
-- **Outputs** (will be used in [visualization section](viz-sec)):
+- **Outputs** (will be used for visualization soon):
     - `/artifact/nnsmith/nnsmith-tvm-base/`
     - `/artifact/nnsmith/nnsmith-ort-base/`
 
@@ -62,7 +61,8 @@ bash eval_nnsmith_base.sh
 First generate image data with:
 
 ```shell
-source /artifact/env.sh
+cd /artifact/
+source env.sh
 cd /artifact/nnsmith
 git checkout 5873a77734e25868912219d853dfc6bc0a210ace # checkout to the visualization commit
 python3 experiments/viz_merged_cov.py --folders nnsmith-tvm-base nnsmith-tvm-binning --tvm \
@@ -138,12 +138,119 @@ See `./tvm-binning/tvm_br_cov_venn.png`
 
 ### EX2: Gradient-based value search (Section 5.3 ablation study)
 
-TBD;
+``````{admonition} EX2: Evaluating gradient-based value search
+:class: important
+
+- **Experiment time**: 1.5 hours;
+- **Outputs** (will be used for visualization soon):
+    - `/artifact/nnsmith/nnsmith-tvm-base/`
+    - `/artifact/nnsmith/nnsmith-ort-base/`
+
+:::{dropdown} **Script**
+:open:
+:icon: code
+:color: light
+
+```shell
+cd /artifact
+source env.sh
+cd /artifact/nnsmith
+
+# Run experiments.
+git checkout fc99719b0ed5faa4e0549c0afbb03fbcfd3c7e8d # checkout to the gradient commit
+bash experiments/input_search_exp.sh 10
+bash experiments/input_search_exp.sh 20
+bash experiments/input_search_exp.sh 30
+
+git checkout 620645967a14d6a7b077cedd9c2c03ed74af50d9 # going back
+
+# visualization
+python experiments/plot_inp_search_merge.py --output gradient            \
+                                            --root 512-model-10-node-exp \
+                                                   512-model-20-node-exp \
+                                                   512-model-30-node-exp
+```
+:::
+``````
+
+````{dropdown} **Get image outputs from docker to local**
+:open:
+:icon: code
+:color: light
+
+First you need to temporarily leave the current container, there are three ways to do it:
+1. **TMUX**: `ctr + b` then `d`;
+2. **Local (recommended)**: just open a new terminal on the machine which is by default out of the container;
+3. **Local**: type `exit` to exit the container environment (later you can resume the container with `docker start -i ${USER}-nnsmith`);
+
+```shell
+# Now in the local environment
+docker cp ${USER}-nnsmith:/artifact/nnsmith/gradient . # copy gradient results to local folder `gradient`
+```
+````
 
 (gen-lemon)=
 ### Generate LEMON models from scratch
 
-TBD;
+Running LEMON in NNSmith's setting is very complicated. That's why running it from scratch is not suggested and we generated those data on the test-bed in advance.
+
+```{admonition} Extra constraints for running LEMON from scratch
+:class: danger
+
+- LEMON's GitHub repository: [https://github.com/Jacob-yen/LEMON](https://github.com/Jacob-yen/LEMON);
+- LEMON requires **GPUs** and **nvidia-docker2** installed;
+- An extra disk space of **256+GB** is encouraged;
+- The whole experiment takes **at least 5 hours** (if you succeed in one pass) but in practice it could take more time due to setup complexity;
+```
+
+Here is the overview:
+
+1. We evaluated LEMON based on LEMON's official docker image;
+2. We tweaked the code to make it work and compare fairly:
+   - The code version is in a [fork](https://github.com/ganler/LEMON/tree/a55f608e98d44a58d0fcfc6e0e9280a88bc29aae);
+   - The main change is to disable LEMON's testing phase, which is not necessary for the purpose of "model generation". Note we did this change to make LEMON run faster to make the comparison fair;
+   - We also changed the configuration file to make it work.
+
+```{admonition} **Step 1: Setup LEMON's docker image**
+:class: important
+Please refer to the [environment](https://github.com/ganler/LEMON/tree/a55f608e98d44a58d0fcfc6e0e9280a88bc29aae#environment) and [Redis startup](https://github.com/ganler/LEMON/tree/a55f608e98d44a58d0fcfc6e0e9280a88bc29aae#redis-startup) sections from the original repository to setup the LEMON environment.
+```
+
+`````{admonition} **Step 2: Running LEMON**
+:class: important
+
+Don't follow instructions in the [Running LEMON](https://github.com/ganler/LEMON/tree/a55f608e98d44a58d0fcfc6e0e9280a88bc29aae#running-lemon) section. Instead, follow the instructions below:
+
+```shell
+# In the LEMON docker container
+cd /
+git clone https://github.com/ganler/LEMON.git LEMON-nnsmith
+source activate lemon
+python -u -m run.mutation_executor tzer.conf
+```
+
+And wait for about 4 hours.
+`````
+
+`````{admonition} **Step 3: Coverting LEMON models to ONNX models**
+:class: important
+
+Next copy the generated models located in `/LEMON-nnsmith/lemon_outputs` from docker image to local.
+Say you can put them in `/path/to/lemon_outputs` on your local machine.
+
+Next can convert the LEMON models (i.e., Keras) to ONNX models in NNSmith's container:
+
+```shell
+cd /artifact/
+source env.sh
+cd /artifact/nnsmith
+python3 experiments/lemon_tf2onnx.py --lemon_output_dir /path/to/lemon_outputs \
+                                     --onnx_dir /artifact/data/lemon-onnx
+```
+`````
+
+Now you can go back to [](exp-e3) to continue evaluating LEMON.
+
 
 ### Other mini-experiments?
 

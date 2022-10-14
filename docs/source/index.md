@@ -41,5 +41,5 @@ maxdepth: 1
 markdown/start_original
 markdown/start_own
 markdown/evaluation
-markdown/faq
+markdown/rdmore
 ```

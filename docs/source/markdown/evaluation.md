@@ -314,4 +314,4 @@ Congratulations! You have successfully finished the main experiments of NNSmith!
 
 ## Read more
 
-You may further refer to [](./faq.md) for potential questions and extra/non-main experiments.
+You may further refer to [](./rdmore.md) for potential questions and extra/non-main experiments.
