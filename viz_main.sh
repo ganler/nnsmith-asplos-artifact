@@ -5,7 +5,7 @@ set -x
 
 # shellcheck source=/dev/null
 source "$(dirname "$0")"/env.sh
-LEMON_ONNX_DIR="$(dirname "$0")"/data/lemon-onnx
+LEMON_ONNX_DIR=$(realpath "$(dirname "$0")"/data/lemon-onnx)
 cd nnsmith
 
 # Go to tag which uses the exact plotting scripts.
