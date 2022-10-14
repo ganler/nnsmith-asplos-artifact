@@ -9,7 +9,7 @@
 
 ## Online documentation
 
-1. [nnsmith-asplos.rtfd.io](nnsmith-asplos.rtfd.io)
+1. [nnsmith-asplos.rtfd.io](https://nnsmith-asplos.rtfd.io)
 2. or [ganler.github.io/nnsmith-asplos-artifact/](https://ganler.github.io/nnsmith-asplos-artifact/)
 
 ## Build the documentation locally
@@ -22,6 +22,7 @@ make html
 # open `docs/build/html/index.html` in your browser
 ```
 
-## Contact 
+## More information
 
-Open an [issue](https://github.com/ganler/nnsmith-asplos-artifact/issues) publicly or contact `jiawei6@illinois.edu` for any techinical questions.
+- **OSS-dev repository**: [![GitHub](https://img.shields.io/badge/github-%23121011.svg?style=for-the-badge&logo=github&logoColor=white)](https://github.com/ise-uiuc/nnsmith)
+- **Contact**: Open an [issue](https://github.com/ganler/nnsmith-asplos-artifact/issues) publicly or contact `jiawei6@illinois.edu` for any techinical questions.
