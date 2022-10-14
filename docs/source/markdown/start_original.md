@@ -52,7 +52,8 @@ docker run -it --name ${USER}-nnsmith -v /data/artifact/:/artifact/data/ ganler/
 
 # Inside the image;
 cd /artifact
-git pull
+git remote set-url origin https://github.com/ganler/nnsmith-asplos-artifact.git
+git pull origin master
 source env.sh     # Use a virtual environment
 bash kick_tire.sh # 40 seconds
 # Running NNSmith fuzzing 20 seconds for each of tvm and onnxruntime.

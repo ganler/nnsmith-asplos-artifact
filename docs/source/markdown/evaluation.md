@@ -161,24 +161,10 @@ This means detailed reproduced data might not be strictly equivalent to that pre
 :icon: code
 :color: light
 
-Run the following scripts to generate images in `/artifact/tvm-cov` and `/artifact/ort-cov`.
+Run the following script to generate images in `/artifact/tvm-cov` and `/artifact/ort-cov`.
 
 ```shell
-# In the container
-source /artifact/env.sh
-cd /artifact/nnsmith
-# Go to tag which uses the exact plotting scripts.
-git checkout 5873a77734e25868912219d853dfc6bc0a210ace
-# TVM coverage.
-python experiments/viz_merged_cov.py --folders nnsmith-tvm-binning graphfuzzer-tvm lemon-tvm --tvm \
-                                     --tags 'NNSmith' 'GraphFuzzer' 'LEMON' --venn \
-                                     --output tvm-cov
-# ORT coverage.
-python experiments/viz_merged_cov.py --folders nnsmith-ort-binning graphfuzzer-ort lemon-ort --ort \
-                                     --tags 'NNSmith' 'GraphFuzzer' 'LEMON' --venn \
-                                     --output ort-cov
-# Go back.
-git checkout 620645967a14d6a7b077cedd9c2c03ed74af50d9
+bash /artifact/viz_main.sh
 ```
 :::
 

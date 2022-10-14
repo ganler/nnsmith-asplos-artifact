@@ -64,3 +64,10 @@ TBD;
 ## Generate LEMON models from scratch
 
 TBD;
+
+## Other mini-experiments?
+
+In this artifact, we elaborated the main experiments ([](./evaluation.md)) and extra experiments ([](exp-extra)) in the paper.
+There is, honestly, still a few more experiments such as Figure 8 and Figure 9. 
+They are not included in the artifact due to their minor importance and the cost of time (e.g., Figure 9 requires re-running the coverage experiments again in another setting which could take another day) & computing resources.
+Nevertheless, feel free to contact the artifact author if you are interested in these experiments and the artifact author will setup them on demand.
