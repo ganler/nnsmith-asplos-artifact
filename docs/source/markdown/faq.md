@@ -1,7 +1,9 @@
-(faq)=
-# **FAQ**
+# **Read more**
 
-## I cannot use docker after installation
+(faq)=
+## FAQ
+
+### I cannot use docker after installation
 
 If you are a sudoer, there are a few post-installation [steps](https://docs.docker.com/engine/install/linux-postinstall/) on Linux:
 
@@ -14,7 +16,7 @@ docker run hello-world # Test a hello-world
 
 If you still encounter problems, you are encouraged to concat me for access to the original test-bed or try to start as a non-root according to the [Dockerfile](https://github.com/ganler/nnsmith-asplos-artifact/blob/master/Dockerfile).
 
-## The OSS-dev version of NNSmith
+### The OSS-dev version of NNSmith
 
 NNSmith has been sharpened towards practical and real-world usage, continously developed on [GitHub](https://github.com/ise-uiuc/nnsmith).
 It has better features, stability, usability, and extensibility. For example, TensorFlow fuzzing is supported at this point (Oct 13, 2022) and you can install it via [PyPI](https://pypi.org/project/nnsmith/).
@@ -24,11 +26,9 @@ You are encouraged to use this artifact to reflect the implementation of our ASP
 [^nsh]: Liu, Jiawei, et al. "NNSmith: Generating Diverse and Valid Test Cases for Deep Learning Compilers." Proceedings of the 28th ACM International Conference on Architectural Support for Programming Languages and Operating Systems. 2023.
 
 (exp-extra)=
-# **Extra experiments**
+## Extra experiments
 
-## Experiments for Ablation Study (Section 5.3)
-
-### EX1: NNSmith-base coverage
+### EX1: NNSmith-base coverage (Section 5.3 ablation study)
 
 ``````{admonition} E1: Evaluating NNSmith base (binning disabled) on {tvm, ort}
 :class: important
@@ -54,18 +54,98 @@ bash eval_nnsmith_base.sh
 
 ``````
 
-TBD;
+````{dropdown} **Generate image results**
+:open:
+:icon: code
+:color: light
 
-### EX2: Gradient-based value search
+First generate image data with:
+
+```shell
+source /artifact/env.sh
+cd /artifact/nnsmith
+git checkout 5873a77734e25868912219d853dfc6bc0a210ace # checkout to the visualization commit
+python3 experiments/viz_merged_cov.py --folders nnsmith-tvm-base nnsmith-tvm-binning --tvm \
+                                        --tags 'no binning' 'w/ binning' --venn \
+                                        --output tvm-binning
+python3 experiments/viz_merged_cov.py --folders nnsmith-ort-base nnsmith-ort-binning --ort \
+                                        --tags 'no binning' 'w/ binning' --venn \
+                                        --output ort-binning
+git checkout 620645967a14d6a7b077cedd9c2c03ed74af50d9 # going back
+```
+
+```shell
+# Check the outputs.
+$ ls /artifact/nnsmith/tvm-binning
+# tvm_br_cov_venn.png      tvm_branch_cov-time.png  tvm_opt_branch_cov-iter.png
+# tvm_branch_cov-iter.png  tvm_opt_br_cov_venn.png  tvm_opt_branch_cov-time.png
+$ ls /artifact/nnsmith/ort-binning/
+# ort_br_cov_venn.png      ort_branch_cov-time.png  ort_opt_branch_cov-iter.png
+# ort_branch_cov-iter.png  ort_opt_br_cov_venn.png  ort_opt_branch_cov-time.png
+```
+
+To get images in your local directory, you need to temporarily leave the current container, there are three ways to do it:
+1. **TMUX**: `ctr + b` then `d`;
+2. **Local (recommended)**: just open a new terminal on the machine which is by default out of the container;
+3. **Local**: type `exit` to exit the container environment (later you can resume the container with `docker start -i ${USER}-nnsmith`);
+
+```shell
+# Now in the local environment
+docker cp ${USER}-nnsmith:/artifact/nnsmith/tvm-binning . # copy TVM results to local folder `tvm-binning`
+docker cp ${USER}-nnsmith:/artifact/nnsmith/ort-binning . # copy ORT results to local folder `ort-binning`
+```
+````
+
+
+``````{admonition} Check the results
+:class: important
+
+```{dropdown} Fuzzing randomness
+:color: warning
+:icon: alert
+
+The sample images below are freshly generated when testing the artifact on the original test-bed (Oct. 14, 2022). They can slightly differ from that in the paper due to fuzzing randomness.
+
+The randomness in fuzzing could come from performance divergence in different system and random seeds.
+This means detailed reproduced data might not be strictly equivalent to that presented in the paper, but the overall trend should be consistent in the long run (say 4 hours).
+```
+
+````{admonition} **Figure 10: Impact of attribute binning on coverage.**
+:class: tip
+
+```{figure} ../img/ort-binning/ort_br_cov_venn.png
+---
+scale: 75%
+align: left
+name: f10a
+---
+Figure 7.(a) **ONNXRuntime** \
+See `./ort-binning/ort_br_cov_venn.png`
+```
+
+```{figure} ../img/tvm-binning/tvm_br_cov_venn.png
+---
+scale: 75%
+align: right
+name: f10b
+---
+Figure 7.(b) **TVM** \
+See `./tvm-binning/tvm_br_cov_venn.png`
+```
+````
+
+``````
+
+### EX2: Gradient-based value search (Section 5.3 ablation study)
 
 TBD;
 
 (gen-lemon)=
-## Generate LEMON models from scratch
+### Generate LEMON models from scratch
 
 TBD;
 
-## Other mini-experiments?
+### Other mini-experiments?
 
 In this artifact, we elaborated the main experiments ([](./evaluation.md)) and extra experiments ([](exp-extra)) in the paper.
 There is, honestly, still a few more experiments such as Figure 8 and Figure 9. 

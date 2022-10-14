@@ -19,3 +19,15 @@ To evaluate NNSmith **on your own setting**, please start with **[](markdown/sta
 :class: important
 Don't forget to check our [**real-world bug report links**](https://docs.google.com/spreadsheets/d/1gzMPlY0sOfyVBGhq9CPkynDnuVpiGm7JpFQ-CPoLStc/edit#gid=0).
 ```
+
+```{toctree}
+---
+caption: Episodes
+maxdepth: 1
+---
+
+markdown/start_original
+markdown/start_own
+markdown/evaluation
+markdown/faq
+```

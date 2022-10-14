@@ -1,4 +1,4 @@
-# **Evaluation on your own machine**
+# **Start on your own machine**
 
 ## Setup and Kick the tire
 

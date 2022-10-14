@@ -6,14 +6,14 @@ We will go through the main experiments corresponding to Section 5.2 in the pape
 
 ```{admonition} Expected time cost
 :class: tip
-- `20` hours **machine** time;
+- `21` hours **machine** time;
 - `<1` hour **human** time;
 ```
 
 | Experiment ID | NNSmith[^nsh]      | GraphFuzzer[^gf]   | LEMON[^lm]         |
 | ------------- | ------------------ | ------------------ | ------------------ |
-| TVM           | [E1](exp-e1) (4hr) | [E2](exp-e2) (4hr) | [E3](exp-e3) (2hr) |
-| ONNXRuntime   | [E1](exp-e1) (4hr) | [E2](exp-e2) (4hr) | [E3](exp-e3) (2hr) |
+| TVM           | [E1](exp-e1) (4hr) | [E2](exp-e2) (5hr) | [E3](exp-e3) (2hr) |
+| ONNXRuntime   | [E1](exp-e1) (4hr) | [E2](exp-e2) (5hr) | [E3](exp-e3) (1hr) |
 
 ```{note}
 We call `ONNXRuntime` as "ort" for short.
@@ -86,7 +86,7 @@ The paper by *Luo, Weisi, et al*[^gf] does not give a name to the fuzzer. We cal
 - **System under test (SUT)**:
     - TVM (LLVM CPU backend);
     - ONNXRuntime (CPU backend);
-- **Experiment time**: 8 hours;
+- **Experiment time**: 10 hours;
 - **Outputs** (will be used in [visualization section](viz-sec)):
     - `/artifact/nnsmith/graphfuzzer-tvm/`
     - `/artifact/nnsmith/graphfuzzer-ort/`
@@ -118,7 +118,7 @@ Evaluating LEMON in NNSmith's setting is very complicated ([why?](gen-lemon)).
 For reviewers' convenience, the LEMON models are pre-generated and pre-converted (see `-v /data/artifact:/...` in the [docker command](org-setup)).
 ```
 
-```{admonition} **This section is *only* available for the *original* test-bed**
+```{admonition} **This section *only* works out-of-the-box on the *original* test-bed**
 :class: warning
 
 This section won't work out of the box if you are working on <u>your own machine</u>.
@@ -129,7 +129,7 @@ Some complicated [steps](gen-lemon) are needed to generate LEMON models, but you
 - **System under test (SUT)**:
     - TVM (LLVM CPU backend);
     - ONNXRuntime (CPU backend);
-- **Experiment time**: 4 hours;
+- **Experiment time**: 3 hours;
 - **Outputs** (will be used in [visualization section](viz-sec)):
     - `/artifact/nnsmith/lemon-tvm/`
     - `/artifact/nnsmith/lemon-ort/`
@@ -148,23 +148,25 @@ bash eval_lemon.sh
 (viz-sec)=
 ## Visualizing and understanding results
 
-```{dropdown} Randomness in Experiments
-:color: warning
-:icon: alert
-
-Note that there will be randomness in fuzzing given different system performance and random seeds.
-This means detailed reproduced data might not be strictly equivalent to that presented in the paper, but the overall trend should be consistent in the long run (say 4 hours).
-```
-
 :::{dropdown} **Visualizing coverage**
 :open:
 :icon: code
 :color: light
 
-Run the following script to generate images in `/artifact/tvm-cov` and `/artifact/ort-cov`.
+Run the following script to generate images in `/artifact/nnsmith/tvm-cov` and `/artifact/nnsmith/ort-cov`.
 
 ```shell
 bash /artifact/viz_main.sh
+```
+
+```shell
+# Check the outputs.
+$ ls /artifact/nnsmith/tvm-cov
+# tvm_br_cov_venn.png      tvm_branch_cov-time.png  tvm_opt_branch_cov-iter.png
+# tvm_branch_cov-iter.png  tvm_opt_br_cov_venn.png  tvm_opt_branch_cov-time.png
+$ ls /artifact/nnsmith/ort-cov/
+# ort_br_cov_venn.png      ort_branch_cov-time.png  ort_opt_branch_cov-iter.png
+# ort_branch_cov-iter.png  ort_opt_br_cov_venn.png  ort_opt_branch_cov-time.png
 ```
 :::
 
@@ -192,29 +194,119 @@ docker cp ${USER}-nnsmith:/artifact/nnsmith/ort-cov . # copy ORT results to loca
 
 Now let's check the results corresponding to figures in the paper:
 
-```{admonition} **Figure 4**
-:class: tip
-- Figure 4.(a): `./ort-cov/ort_branch_cov-time.png`;
-- Figure 4.(b): `./tvm-cov/tvm_branch_cov-time.png`;
+```{dropdown} Fuzzing randomness
+:color: warning
+:icon: alert
+
+The sample images below are freshly generated when testing the artifact on the original test-bed (Oct. 14, 2022). They can slightly differ from that in the paper due to fuzzing randomness.
+
+The randomness in fuzzing could come from performance divergence in different system and random seeds.
+This means detailed reproduced data might not be strictly equivalent to that presented in the paper, but the overall trend should be consistent in the long run (say 4 hours).
 ```
 
-```{admonition} **Figure 5**
-:class: tip
-- Figure 5.(a): `./ort-cov/ort_branch_cov-iter.png`;
-- Figure 5.(b): `./tvm-cov/tvm_branch_cov-iter.png`;
+```{dropdown} Potential legend style shifting (*if you skipped LEMON*)
+:color: warning
+:icon: alert
+
+According to [](exp-e3), the curve/pie for LEMON baseline might not be available if not starting with the original test-bed). As a result, showing only two baselines make the  curves or pies of the figures below shifted with legend styles. In this case, please distinguish the systems by **tagged labels** as the colors might not match that in the original paper.
 ```
 
-```{admonition} **Figure 6**
+`````{admonition} **Figure 4: Total branch coverage over time (all files)**
 :class: tip
-- Figure 6.(a): `./ort-cov/ort_opt_branch_cov-time.png`;
-- Figure 6.(b): `./tvm-cov/tvm_opt_branch_cov-time.png`;
+
+```{figure} ../img/ort-cov/ort_branch_cov-time.png
+---
+scale: 53%
+align: left
+name: f4a
+---
+Figure 4.(a) **ONNXRuntime** \
+See `./ort-cov/ort_branch_cov-time.png`
 ```
 
-```{admonition} **Figure 7**
-:class: tip
-- Figure 7.(a): `./ort-cov/ort_br_cov_venn.png`;
-- Figure 7.(b): `./tvm-cov/tvm_br_cov_venn.png`;
+```{figure} ../img/tvm-cov/tvm_branch_cov-time.png
+---
+scale: 53%
+align: right
+name: f4b
+---
+Figure 4.(b) **TVM** \
+See `./tvm-cov/tvm_branch_cov-time.png`
 ```
+`````
+
+
+`````{admonition} **Figure 5: Total branch coverage over test cases (all files)**
+:class: tip
+
+```{figure} ../img/ort-cov/ort_branch_cov-iter.png
+---
+scale: 60%
+align: left
+name: f5a
+---
+Figure 5.(a) **ONNXRuntime** \
+See `./ort-cov/ort_branch_cov-iter.png`
+```
+
+```{figure} ../img/tvm-cov/tvm_branch_cov-iter.png
+---
+scale: 60%
+align: right
+name: f5b
+---
+Figure 5.(b) **TVM** \
+See `./tvm-cov/tvm_branch_cov-iter.png`
+```
+`````
+
+````{admonition} **Figure 6:  Total branch coverage over time (pass files)**
+:class: tip
+
+```{figure} ../img/ort-cov/ort_opt_branch_cov-time.png
+---
+scale: 53%
+align: left
+name: f6a
+---
+Figure 6.(a) **ONNXRuntime** \
+See `./ort-cov/ort_opt_branch_cov-time.png`
+```
+
+```{figure} ../img/tvm-cov/tvm_opt_branch_cov-time.png
+---
+scale: 53%
+align: right
+name: f6b
+---
+Figure 6.(b) **TVM** \
+See `./tvm-cov/tvm_opt_branch_cov-time.png`
+```
+````
+
+````{admonition} **Figure 7: Venn diagram of overall coverage (total coverage shown in parenthesis)**
+:class: tip
+
+```{figure} ../img/ort-cov/ort_br_cov_venn.png
+---
+scale: 60%
+align: left
+name: f7a
+---
+Figure 7.(a) **ONNXRuntime** \
+See `./ort-cov/ort_br_cov_venn.png`
+```
+
+```{figure} ../img/tvm-cov/tvm_br_cov_venn.png
+---
+scale: 60%
+align: right
+name: f7b
+---
+Figure 7.(b) **TVM** \
+See `./tvm-cov/tvm_br_cov_venn.png`
+```
+````
 
 ``````
 
