@@ -6,12 +6,15 @@
 1. **OS:** A Linux System with [Docker](https://docs.docker.com/get-docker/) Support;
 2. **Hardware:** X86 CPU; 16GB RAM; 512GB Storage; Good Network to [GitHub](https://github.com/) and [Docker Hub](https://hub.docker.com/);
 
-```{dropdown} **Warning: Super-multi-core test-bed are not recommended**
+```{dropdown} **Warning: Super-multi-core & SLURM-based test-bed are not recommended**
 :icon: alert
 :color: warning
 
-The artifact is based on the exact [version](https://github.com/ise-uiuc/nnsmith/commit/620645967a14d6a7b077cedd9c2c03ed74af50d9) used in our paper,
-where ONNXRuntime might use [all CPU cores](https://github.com/ise-uiuc/nnsmith/blob/620645967a14d6a7b077cedd9c2c03ed74af50d9/nnsmith/backends/ort_graph.py#L37) which could bring trouble on servers with very many cores. However, you may alleviate it with `export NNSMITH_CORE=16` or smaller.
+We observed performance issues when running NNSmith-ONNXRuntime on a cluster managed by SLURM and on a 64-core workstation.
+Therefore, users might want to avoid the mentioned settings.
+Nevertheless, users may set `export NNSMITH_CORE=1` to stabilize the performance.
+
+We are not sure about the reason but it could be that ONNXRuntime can use [all CPU cores](https://github.com/ise-uiuc/nnsmith/blob/620645967a14d6a7b077cedd9c2c03ed74af50d9/nnsmith/backends/ort_graph.py#L37) by default, causing over-threading.
 ```
 
 Before you start, please make sure you have [**Docker**](https://docs.docker.com/engine/install/) installed.
