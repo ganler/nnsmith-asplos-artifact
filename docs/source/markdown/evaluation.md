@@ -224,22 +224,22 @@ According to [](exp-e3), the curve/pie for LEMON baseline might not be available
 
 ```{figure} ../img/ort-cov/ort_branch_cov-time.png
 ---
-scale: 53%
+scale: 51%
 align: left
 name: f4a
 ---
 Figure 4.(a) **ONNXRuntime** \
-See `./ort-cov/ort_branch_cov-time.png`
+In `./ort-cov/ort_branch_cov-time.png`
 ```
 
 ```{figure} ../img/tvm-cov/tvm_branch_cov-time.png
 ---
-scale: 53%
+scale: 51%
 align: right
 name: f4b
 ---
 Figure 4.(b) **TVM** \
-See `./tvm-cov/tvm_branch_cov-time.png`
+In `./tvm-cov/tvm_branch_cov-time.png`
 ```
 `````
 
@@ -254,7 +254,7 @@ align: left
 name: f5a
 ---
 Figure 5.(a) **ONNXRuntime** \
-See `./ort-cov/ort_branch_cov-iter.png`
+In `./ort-cov/ort_branch_cov-iter.png`
 ```
 
 ```{figure} ../img/tvm-cov/tvm_branch_cov-iter.png
@@ -264,7 +264,7 @@ align: right
 name: f5b
 ---
 Figure 5.(b) **TVM** \
-See `./tvm-cov/tvm_branch_cov-iter.png`
+In `./tvm-cov/tvm_branch_cov-iter.png`
 ```
 `````
 
@@ -273,22 +273,22 @@ See `./tvm-cov/tvm_branch_cov-iter.png`
 
 ```{figure} ../img/ort-cov/ort_opt_branch_cov-time.png
 ---
-scale: 53%
+scale: 51%
 align: left
 name: f6a
 ---
 Figure 6.(a) **ONNXRuntime** \
-See `./ort-cov/ort_opt_branch_cov-time.png`
+`./ort-cov/ort_opt_branch_cov-time.png`
 ```
 
 ```{figure} ../img/tvm-cov/tvm_opt_branch_cov-time.png
 ---
-scale: 53%
+scale: 51%
 align: right
 name: f6b
 ---
 Figure 6.(b) **TVM** \
-See `./tvm-cov/tvm_opt_branch_cov-time.png`
+`./tvm-cov/tvm_opt_branch_cov-time.png`
 ```
 ````
 
