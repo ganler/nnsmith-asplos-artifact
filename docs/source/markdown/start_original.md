@@ -40,6 +40,14 @@ tmux at -t nnsmith-artifact
 ```
 ``````
 
+```{dropdown} **Test-bed "congestion control"**
+:color: warning
+:icon: warning
+
+Fuzzing is also a game of speed. Have too many users running experiments in the same time could bring performance randomness.
+Therefore, we suggest test-bed users to check the system workload (for example, check `htop`) before starting and only run experiments when the overall CPU utilization is below 60%.
+```
+
 :::{dropdown} **Kick the tire!**
 :open:
 :icon: code
