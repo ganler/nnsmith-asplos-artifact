@@ -7,6 +7,7 @@
 
 <p align="center">
     <a href="https://nnsmith-asplos.readthedocs.io/"><img src="https://github.com/ganler/nnsmith-asplos-artifact/actions/workflows/doc.yaml/badge.svg">
+    <a href="https://doi.org/10.5281/zenodo.7200841"><img src="https://zenodo.org/badge/DOI/10.5281/zenodo.7200841.svg" alt="DOI"></a>
     <a href="https://arxiv.org/abs/2207.13066"><img src="https://img.shields.io/badge/arXiv-2207.13066-b31b1b.svg">
     <a href="https://hub.docker.com/repository/docker/ganler/nnsmith-asplos23-ae"><img src="https://img.shields.io/docker/image-size/ganler/nnsmith-asplos23-ae">
     <a href="https://github.com/ganler/nnsmith-asplos-artifact/blob/main/LICENSE"><img src="https://img.shields.io/badge/License-Apache_2.0-blue.svg"></a>
