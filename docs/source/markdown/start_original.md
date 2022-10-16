@@ -8,15 +8,15 @@
 
 Dear reviewers, please follow the following steps:
 
-- **Step 1**: please kindly send your public key to us via HotCRP.
-- **Step 2**: once confirmed you can login with one of the options:
+- **Step 1**: obtain the password from the AEC or kindly send your public key to us via HotCRP.
+- **Step 2**: then you can login with one of the options:
     - U.S: `ssh ${reviewer-id}@us-sj-cuvip-1.natfrp.cloud -p 56789`
     - Germany: `ssh ${reviewer-id}@de-fr-ol-1.natfrp.cloud -p 56789`
     - China: `ssh ${reviewer-id}@cn-cd-dx-6.natfrp.cloud -p 35853`
 
-Note the test-bed is located in Illinois, US and you can simply regard the locations above as that of the jump servers. You are recommended to choose the one near to your location for better network connectivity.
+For example, for Reviewer A, the `${reviewer-id}` is `reviewer-a`.
 
-Please do not hesitate contacting the author over HotCRP or `jiawei6@illinois.edu` for any technical issues.
+Note the test-bed is located in Illinois, US and you can simply regard the locations above as that of the jump servers. You are recommended to choose the one near to your location for better network connectivity.
 ``````
 
 ``````{dropdown} **Use TMUX to run long experiments in the background**
@@ -46,7 +46,7 @@ tmux at -t nnsmith-artifact
 :color: success
 ```bash
 # Pull docker image from docker hub;
-docker run -it --name ${USER}-nnsmith -v /data/artifact/:/artifact/data/ ganler/nnsmith-asplos23-ae
+docker run -it --name ${USER}-nnsmith -v /data/artifact/lemon-onnx:/artifact/data/lemon-onnx ganler/nnsmith-asplos23-ae
 # By using this command, you will "get into" the image like entering a virtual machine.
 # The session will be kept under the name "${USER}-nnsmith"
 
