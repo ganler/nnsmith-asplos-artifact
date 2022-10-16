@@ -7,6 +7,9 @@ set -x
 source "$(dirname "$0")"/env.sh
 cd "$(dirname "$0")"/nnsmith || exit 1
 
+# Make sure the commit is correct.
+git checkout 620645967a14d6a7b077cedd9c2c03ed74af50d9
+
 LEMON_ONNX="$(pwd)/../data/lemon-onnx"
 export LEMON_ONNX
 

@@ -22,6 +22,9 @@ source "$(dirname "$0")"/env.sh
 cd "$(dirname "$0")"/nnsmith || exit 1
 # Also see: https://github.com/ise-uiuc/nnsmith/blob/620645967a14d6a7b077cedd9c2c03ed74af50d9/README.md#coverage-evaluation
 
+# Make sure the commit is correct.
+git checkout 620645967a14d6a7b077cedd9c2c03ed74af50d9
+
 # Remove old coverage files
 [ -f default.profraw ] && rm default.profraw
 # Make sure TVM/ORT dtype support config file is generated.
