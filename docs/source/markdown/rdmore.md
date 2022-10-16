@@ -242,6 +242,7 @@ Don't follow instructions in the [Running LEMON](https://github.com/ganler/LEMON
 # In the LEMON docker container
 cd /
 git clone https://github.com/ganler/LEMON.git LEMON-nnsmith
+cd /LEMON-nnsmith
 source activate lemon
 python -u -m run.mutation_executor tzer.conf
 ```
