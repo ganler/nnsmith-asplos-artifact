@@ -156,9 +156,10 @@ See `./tvm-binning/tvm_br_cov_venn.png`
 cd /artifact
 source env.sh
 cd /artifact/nnsmith
+mkdir -p config
 
 # Run experiments.
-git checkout fc99719b0ed5faa4e0549c0afbb03fbcfd3c7e8d # checkout to the gradient commit
+git checkout 1a3ad5863cf8ee5e1db3fbd046cd854b87bf26c9 # checkout to the gradient commit
 bash experiments/input_search_exp.sh 10
 bash experiments/input_search_exp.sh 20
 bash experiments/input_search_exp.sh 30
