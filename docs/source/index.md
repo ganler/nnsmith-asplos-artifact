@@ -73,7 +73,7 @@ tmux at -t nnsmith-artifact
 docker pull ganler/nnsmith-asplos23-ae
 ```
 
-- Method 2: [Zenodo archive](https://zenodo.org/record/7200841):
+- Method 2: [Zenodo archive](https://zenodo.org/record/7222132):
 
 ```shell
 tar xf NNSmith-ASPLOS23-Artifact.tar.gz
