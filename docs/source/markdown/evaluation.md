@@ -123,14 +123,8 @@ bash eval_graphfuzzer.sh
 :icon: unlock
 
 Evaluating LEMON in NNSmith's setting is very complicated ([why?](gen-lemon)).
-For reviewers' convenience, the LEMON models are pre-generated and pre-converted (see `-v /data/artifact:/...` in the [docker command](org-setup)).
-```
-
-```{admonition} **This section *only* works out-of-the-box on the *original* test-bed**
-:class: warning
-
-This section won't work out of the box if you are working on <u>your own machine</u>.
-Some complicated [steps](gen-lemon) are needed to generate LEMON models, but you might skip it as it's not a mandatory baseline for NNSmith.
+For reviewers' convenience, the LEMON models are pre-generated and pre-converted (see `-v /data/artifact:/...` in the [docker run command](gstart)).
+Nevertheless, you can refer to [](gen-lemon) to re-generate the models.
 ```
 
 - **Fuzzer type**: LEMON;
