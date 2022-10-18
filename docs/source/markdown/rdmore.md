@@ -143,8 +143,9 @@ See `./tvm-binning/tvm_br_cov_venn.png`
 
 - **Experiment time**: 1.5 hours;
 - **Outputs** (will be used for visualization soon):
-    - `/artifact/nnsmith/nnsmith-tvm-base/`
-    - `/artifact/nnsmith/nnsmith-ort-base/`
+    - `/artifact/nnsmith/512-model-10-node-exp/`
+    - `/artifact/nnsmith/512-model-20-node-exp/`
+    - `/artifact/nnsmith/512-model-30-node-exp/`
 
 :::{dropdown} **Script**
 :open:
