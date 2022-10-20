@@ -38,8 +38,6 @@ docker --version # Test docker availability
 ```
 Otherwise please follow the [**installation page**](https://docs.docker.com/engine/install/) of Docker.
 
-
-**ASPLOS'23 AE reviewers**: you may also directly access the original test-bed if such information is given on HotCRP. Otherwise, the option for using the original test-bed remotely is disabled.
 `````
 
 ``````{dropdown} **Use TMUX to run long experiments in the background**
@@ -101,6 +99,12 @@ tar xvf lemon-onnx.tar   # About 2~4 minutes
 # Models are stored in ./lemon-onnx
 # rm lemon-onnx.tar      # No longer needed
 ```
+
+```{admonition} **For ASPLOS'23 AE reviewers**
+:class: note
+Please contact us via HotCRP if you have trouble in getting LEMON models and we can open a test-bed access with environments installed for you.
+```
+
 ````
 
 
