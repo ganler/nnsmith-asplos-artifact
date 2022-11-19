@@ -110,7 +110,7 @@ tar xvf lemon-onnx.tar   # About 2~4 minutes
 :color: success
 ```bash
 # Run docker image
-docker run -it --name ${USER}-nnsmith -v ./lemon-onnx:/artifact/data/lemon-onnx ganler/nnsmith-asplos23-ae
+docker run -it --name ${USER}-nnsmith -v $(realpath ./lemon-onnx):/artifact/data/lemon-onnx ganler/nnsmith-asplos23-ae
 # Now, you will "get into" the image like entering a virtual machine.
 # By using this command, you will "get into" the image like entering a virtual machine.
 # The session will be kept under the name "${USER}-nnsmith"
