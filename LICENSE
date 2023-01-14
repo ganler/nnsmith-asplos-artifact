@@ -201,6 +201,9 @@
    See the License for the specific language governing permissions and
    limitations under the License.
 
---------------------------------------------------------------------------------
+------------------------------------------------------------------------------------
+This product bundles third-party components under other open source licenses.
 
-Copyright 2022 Jiawei Liu
+The sub-component `nnsmith/` (installed by `install_nnsmith.sh`)
+created by Jiawei Liu (https://github.com/ise-uiuc/nnsmith)
+is subject to Apache License, Version 2.0 (https://www.apache.org/licenses/LICENSE-2.0)
