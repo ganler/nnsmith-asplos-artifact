@@ -13,6 +13,8 @@
     <a href="https://github.com/ganler/nnsmith-asplos-artifact/blob/main/LICENSE"><img src="https://img.shields.io/badge/License-Apache_2.0-blue.svg"></a>
 </p>
 
+🏆 **Distinguished Artifact Award at ASPLOS'23** 🏆
+
 ## Online documentation
 
 1. [nnsmith-asplos.rtfd.io](https://nnsmith-asplos.rtfd.io)
