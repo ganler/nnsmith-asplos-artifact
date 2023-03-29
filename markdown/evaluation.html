@@ -1,0 +1,785 @@
+
+
+<!DOCTYPE html>
+
+
+<html lang="en" >
+
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.19: https://docutils.sourceforge.io/" />
+
+    <title>Evaluating artifact &#8212; NNSmith ASPLOS Artifact  documentation</title>
+  
+  
+  
+  <script data-cfasync="false">
+    document.documentElement.dataset.mode = localStorage.getItem("mode") || "";
+    document.documentElement.dataset.theme = localStorage.getItem("theme") || "light";
+  </script>
+  
+  <!-- Loaded before other Sphinx assets -->
+  <link href="../_static/styles/theme.css?digest=12da95d707ffb74b382d" rel="stylesheet" />
+<link href="../_static/styles/bootstrap.css?digest=12da95d707ffb74b382d" rel="stylesheet" />
+<link href="../_static/styles/pydata-sphinx-theme.css?digest=12da95d707ffb74b382d" rel="stylesheet" />
+
+  
+  <link href="../_static/vendor/fontawesome/6.1.2/css/all.min.css?digest=12da95d707ffb74b382d" rel="stylesheet" />
+  <link rel="preload" as="font" type="font/woff2" crossorigin href="../_static/vendor/fontawesome/6.1.2/webfonts/fa-solid-900.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="../_static/vendor/fontawesome/6.1.2/webfonts/fa-brands-400.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="../_static/vendor/fontawesome/6.1.2/webfonts/fa-regular-400.woff2" />
+
+    <link rel="stylesheet" type="text/css" href="../_static/pygments.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/copybutton.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/design-style.4045f2051d55cab465a707391d5b2007.min.css" />
+  
+  <!-- Pre-loaded scripts that we'll load fully later -->
+  <link rel="preload" as="script" href="../_static/scripts/bootstrap.js?digest=12da95d707ffb74b382d" />
+<link rel="preload" as="script" href="../_static/scripts/pydata-sphinx-theme.js?digest=12da95d707ffb74b382d" />
+
+    <script data-url_root="../" id="documentation_options" src="../_static/documentation_options.js"></script>
+    <script src="../_static/jquery.js"></script>
+    <script src="../_static/underscore.js"></script>
+    <script src="../_static/_sphinx_javascript_frameworks_compat.js"></script>
+    <script src="../_static/doctools.js"></script>
+    <script src="../_static/sphinx_highlight.js"></script>
+    <script src="../_static/clipboard.min.js"></script>
+    <script src="../_static/copybutton.js"></script>
+    <script src="../_static/design-tabs.js"></script>
+    <script>DOCUMENTATION_OPTIONS.pagename = 'markdown/evaluation';</script>
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="Read more" href="rdmore.html" />
+    <link rel="prev" title="NNSmith ASPLOS’23 Artifact!" href="../index.html" />
+  <meta name="viewport" content="width=device-width, initial-scale=1"/>
+  <meta name="docsearch:language" content="en"/>
+  </head>
+  
+  
+  <body data-bs-spy="scroll" data-bs-target=".bd-toc-nav" data-offset="180" data-bs-root-margin="0px 0px -60%" data-default-mode="">
+
+  
+  
+  <a class="skip-link" href="#main-content">Skip to main content</a>
+  
+  <input type="checkbox"
+          class="sidebar-toggle"
+          name="__primary"
+          id="__primary"/>
+  <label class="overlay overlay-primary" for="__primary"></label>
+  
+  <input type="checkbox"
+          class="sidebar-toggle"
+          name="__secondary"
+          id="__secondary"/>
+  <label class="overlay overlay-secondary" for="__secondary"></label>
+  
+  <div class="search-button__wrapper">
+    <div class="search-button__overlay"></div>
+    <div class="search-button__search-container">
+<form class="bd-search d-flex align-items-center"
+      action="../search.html"
+      method="get">
+  <i class="fa-solid fa-magnifying-glass"></i>
+  <input type="search"
+         class="form-control"
+         name="q"
+         id="search-input"
+         placeholder="Search the docs ..."
+         aria-label="Search the docs ..."
+         autocomplete="off"
+         autocorrect="off"
+         autocapitalize="off"
+         spellcheck="false"/>
+  <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd>K</kbd></span>
+</form></div>
+  </div>
+  
+    <nav class="bd-header navbar navbar-expand-lg bd-navbar">
+<div class="bd-header__inner bd-page-width">
+  <label class="sidebar-toggle primary-toggle" for="__primary">
+    <span class="fa-solid fa-bars"></span>
+  </label>
+  
+  <div class="navbar-header-items__start">
+    
+      <div class="navbar-item">
+  
+
+<a class="navbar-brand logo" href="../index.html">
+  
+  
+  
+  
+    
+    
+      
+    
+    
+    <img src="https://github.com/ganler/nnsmith-logo/raw/master/nnsmith-logo.svg" class="logo__image only-light" alt="Logo image"/>
+    <script>document.write(`<img src="https://github.com/ganler/nnsmith-logo/raw/master/nnsmith-logo.svg" class="logo__image only-dark" alt="Logo image"/>`);</script>
+  
+  
+</a></div>
+    
+  </div>
+  
+  
+  <div class="col-lg-9 navbar-header-items">
+    
+    <div class="me-auto navbar-header-items__center">
+      
+        <div class="navbar-item"><nav class="navbar-nav">
+  <p class="sidebar-header-items__title"
+     role="heading"
+     aria-level="1"
+     aria-label="Site Navigation">
+    Site Navigation
+  </p>
+  <ul class="bd-navbar-elements navbar-nav">
+    
+                    <li class="nav-item current active">
+                      <a class="nav-link nav-internal" href="#">
+                        Evaluating artifact
+                      </a>
+                    </li>
+                
+
+                    <li class="nav-item">
+                      <a class="nav-link nav-internal" href="rdmore.html">
+                        Read more
+                      </a>
+                    </li>
+                
+  </ul>
+</nav></div>
+      
+    </div>
+    
+    
+    <div class="navbar-header-items__end">
+      
+        <div class="navbar-item navbar-persistent--container">
+          
+<script>
+document.write(`
+  <button class="btn btn-sm navbar-btn search-button search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="fa-solid fa-magnifying-glass"></i>
+  </button>
+`);
+</script>
+        </div>
+      
+      
+        <div class="navbar-item">
+<script>
+document.write(`
+  <button class="theme-switch-button btn btn-sm btn-outline-primary navbar-btn rounded-circle" title="light/dark" aria-label="light/dark" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <span class="theme-switch" data-mode="light"><i class="fa-solid fa-sun"></i></span>
+    <span class="theme-switch" data-mode="dark"><i class="fa-solid fa-moon"></i></span>
+    <span class="theme-switch" data-mode="auto"><i class="fa-solid fa-circle-half-stroke"></i></span>
+  </button>
+`);
+</script></div>
+      
+    </div>
+    
+  </div>
+  
+  
+    <div class="navbar-persistent--mobile">
+<script>
+document.write(`
+  <button class="btn btn-sm navbar-btn search-button search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="fa-solid fa-magnifying-glass"></i>
+  </button>
+`);
+</script>
+    </div>
+  
+
+  
+    <label class="sidebar-toggle secondary-toggle" for="__secondary">
+      <span class="fa-solid fa-outdent"></span>
+    </label>
+  
+</div>
+
+    </nav>
+  
+  <div class="bd-container">
+    <div class="bd-container__inner bd-page-width">
+      
+      <div class="bd-sidebar-primary bd-sidebar hide-on-wide">
+        
+
+  
+  <div class="sidebar-header-items sidebar-primary__section">
+    
+    
+      <div class="sidebar-header-items__center">
+        
+          <div class="navbar-item"><nav class="navbar-nav">
+  <p class="sidebar-header-items__title"
+     role="heading"
+     aria-level="1"
+     aria-label="Site Navigation">
+    Site Navigation
+  </p>
+  <ul class="bd-navbar-elements navbar-nav">
+    
+                    <li class="nav-item current active">
+                      <a class="nav-link nav-internal" href="#">
+                        Evaluating artifact
+                      </a>
+                    </li>
+                
+
+                    <li class="nav-item">
+                      <a class="nav-link nav-internal" href="rdmore.html">
+                        Read more
+                      </a>
+                    </li>
+                
+  </ul>
+</nav></div>
+        
+      </div>
+    
+    
+    
+      <div class="sidebar-header-items__end">
+        
+          <div class="navbar-item">
+<script>
+document.write(`
+  <button class="theme-switch-button btn btn-sm btn-outline-primary navbar-btn rounded-circle" title="light/dark" aria-label="light/dark" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <span class="theme-switch" data-mode="light"><i class="fa-solid fa-sun"></i></span>
+    <span class="theme-switch" data-mode="dark"><i class="fa-solid fa-moon"></i></span>
+    <span class="theme-switch" data-mode="auto"><i class="fa-solid fa-circle-half-stroke"></i></span>
+  </button>
+`);
+</script></div>
+        
+      </div>
+    
+  </div>
+  
+  
+  <div class="sidebar-primary-items__end sidebar-primary__section">
+  </div>
+  
+  <div id="rtd-footer-container"></div>
+
+
+      </div>
+      
+      <main id="main-content" class="bd-main">
+        
+        
+          <div class="bd-content">
+            <div class="bd-article-container">
+              
+              <div class="bd-header-article">
+<div class="header-article-items header-article__inner">
+  
+    <div class="header-article-items__start">
+      
+        <div class="header-article-item">
+
+
+
+<nav aria-label="Breadcrumbs">
+  <ul class="bd-breadcrumbs" role="navigation" aria-label="Breadcrumb">
+    
+    <li class="breadcrumb-item breadcrumb-home">
+      <a href="../index.html" class="nav-link" aria-label="Home">
+        <i class="fa-solid fa-home"></i>
+      </a>
+    </li>
+    <li class="breadcrumb-item active" aria-current="page"><strong>Evaluating artifact</strong></li>
+  </ul>
+</nav>
+</div>
+      
+    </div>
+  
+  
+</div>
+</div>
+              
+              
+              
+                
+<div id="searchbox"></div>
+                <article class="bd-article" role="main">
+                  
+  <section id="evaluating-artifact">
+<h1><strong>Evaluating artifact</strong><a class="headerlink" href="#evaluating-artifact" title="Permalink to this heading">#</a></h1>
+<section id="evidence-of-bug-finding">
+<h2>Evidence of bug finding<a class="headerlink" href="#evidence-of-bug-finding" title="Permalink to this heading">#</a></h2>
+<p>In our paper, we claimed that (in the abstract):</p>
+<blockquote>
+<div><p>… has found 65 new bugs in the last seven months for TVM, TensorRT, ONNXRuntime, and PyTorch.</p>
+</div></blockquote>
+<p>You can find the evidence in our <a class="reference external" href="https://docs.google.com/spreadsheets/d/1gzMPlY0sOfyVBGhq9CPkynDnuVpiGm7JpFQ-CPoLStc/edit#gid=0">bug finding table</a>.</p>
+</section>
+<section id="coverage-experiments">
+<h2>Coverage experiments<a class="headerlink" href="#coverage-experiments" title="Permalink to this heading">#</a></h2>
+<p>We will go through the main experiments corresponding to Section 5.2 in the paper, which evaluates end-to-end coverage efficiency of NNSmith and baselines.</p>
+<div class="tip admonition">
+<p class="admonition-title">Expected time cost</p>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">21</span></code> hours <strong>machine</strong> time;</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">&lt;1</span></code> hour <strong>human</strong> time;</p></li>
+</ul>
+</div>
+<table class="table">
+<thead>
+<tr class="row-odd"><th class="head"><p>Experiment ID</p></th>
+<th class="head"><p>NNSmith<a class="footnote-reference brackets" href="#nsh" id="id1" role="doc-noteref"><span class="fn-bracket">[</span>1<span class="fn-bracket">]</span></a></p></th>
+<th class="head"><p>GraphFuzzer<a class="footnote-reference brackets" href="#gf" id="id2" role="doc-noteref"><span class="fn-bracket">[</span>2<span class="fn-bracket">]</span></a></p></th>
+<th class="head"><p>LEMON<a class="footnote-reference brackets" href="#lm" id="id3" role="doc-noteref"><span class="fn-bracket">[</span>3<span class="fn-bracket">]</span></a></p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p>TVM</p></td>
+<td><p><a class="reference internal" href="#exp-e1"><span class="std std-ref">E1</span></a> (4hr)</p></td>
+<td><p><a class="reference internal" href="#exp-e2"><span class="std std-ref">E2</span></a> (5hr)</p></td>
+<td><p><a class="reference internal" href="#exp-e3"><span class="std std-ref">E3</span></a> (2hr)</p></td>
+</tr>
+<tr class="row-odd"><td><p>ONNXRuntime</p></td>
+<td><p><a class="reference internal" href="#exp-e1"><span class="std std-ref">E1</span></a> (4hr)</p></td>
+<td><p><a class="reference internal" href="#exp-e2"><span class="std std-ref">E2</span></a> (5hr)</p></td>
+<td><p><a class="reference internal" href="#exp-e3"><span class="std std-ref">E3</span></a> (1hr)</p></td>
+</tr>
+</tbody>
+</table>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>We call <code class="docutils literal notranslate"><span class="pre">ONNXRuntime</span></code> as “ort” for short.</p>
+</div>
+<section id="tl-dr">
+<h3>TL;DR<a class="headerlink" href="#tl-dr" title="Permalink to this heading">#</a></h3>
+<p>Evaluate the artifact in the fastest way:</p>
+<ul class="simple">
+<li><p>Just run this in a <a class="reference external" href="https://github.com/tmux/tmux/wiki">tmux</a> session;</p></li>
+</ul>
+<details class="sd-sphinx-override sd-dropdown sd-card sd-mb-3" open="open">
+<summary class="sd-summary-title sd-card-header sd-bg-light sd-bg-text-light">
+<span class="sd-summary-icon"><svg version="1.1" width="1.0em" height="1.0em" class="sd-octicon sd-octicon-code" viewBox="0 0 16 16" aria-hidden="true"><path fill-rule="evenodd" d="M4.72 3.22a.75.75 0 011.06 1.06L2.06 8l3.72 3.72a.75.75 0 11-1.06 1.06L.47 8.53a.75.75 0 010-1.06l4.25-4.25zm6.56 0a.75.75 0 10-1.06 1.06L13.94 8l-3.72 3.72a.75.75 0 101.06 1.06l4.25-4.25a.75.75 0 000-1.06l-4.25-4.25z"></path></svg></span><strong>Script</strong><div class="sd-summary-down docutils">
+<svg version="1.1" width="1.5em" height="1.5em" class="sd-octicon sd-octicon-chevron-down" viewBox="0 0 24 24" aria-hidden="true"><path fill-rule="evenodd" d="M5.22 8.72a.75.75 0 000 1.06l6.25 6.25a.75.75 0 001.06 0l6.25-6.25a.75.75 0 00-1.06-1.06L12 14.44 6.28 8.72a.75.75 0 00-1.06 0z"></path></svg></div>
+<div class="sd-summary-up docutils">
+<svg version="1.1" width="1.5em" height="1.5em" class="sd-octicon sd-octicon-chevron-up" viewBox="0 0 24 24" aria-hidden="true"><path fill-rule="evenodd" d="M18.78 15.28a.75.75 0 000-1.06l-6.25-6.25a.75.75 0 00-1.06 0l-6.25 6.25a.75.75 0 101.06 1.06L12 9.56l5.72 5.72a.75.75 0 001.06 0z"></path></svg></div>
+</summary><div class="sd-summary-content sd-card-body docutils">
+<div class="highlight-shell notranslate"><div class="highlight"><pre><span></span>bash<span class="w"> </span>/artifact/eval_nnsmith.sh<span class="p">;</span><span class="w">      </span><span class="se">\</span>
+bash<span class="w"> </span>/artifact/eval_graphfuzzer.sh<span class="p">;</span><span class="w">  </span><span class="se">\</span>
+bash<span class="w"> </span>/artifact/eval_lemon.sh
+</pre></div>
+</div>
+</div>
+</details><ul class="simple">
+<li><p>Come back 1 day later;</p></li>
+<li><p>Jump to the <a class="reference internal" href="#viz-sec"><span class="std std-ref">result visualization section</span></a> to verify the results.</p></li>
+</ul>
+<p>Or if you want to understand the scripts being executed, you can continue reading the following sub-sections (<a class="reference internal" href="#exp-e1"><span class="std std-ref">E1</span></a>~<a class="reference internal" href="#exp-e3"><span class="std std-ref">E3</span></a>).</p>
+</section>
+<section id="e1-nnsmith-coverage">
+<span id="exp-e1"></span><h3>E1: NNSmith<a class="footnote-reference brackets" href="#nsh" id="id4" role="doc-noteref"><span class="fn-bracket">[</span>1<span class="fn-bracket">]</span></a> Coverage<a class="headerlink" href="#e1-nnsmith-coverage" title="Permalink to this heading">#</a></h3>
+<div class="important admonition">
+<p class="admonition-title">E1: Evaluating NNSmith on {tvm, ort}</p>
+<ul class="simple">
+<li><p><strong>Fuzzer type</strong>: NNSmith (with binning);</p></li>
+<li><p><strong>System under test (SUT)</strong>:</p>
+<ul>
+<li><p>TVM (LLVM CPU backend);</p></li>
+<li><p>ONNXRuntime (CPU backend);</p></li>
+</ul>
+</li>
+<li><p><strong>Experiment time</strong>: 8 hours;</p></li>
+<li><p><strong>Outputs</strong> (will be used in <a class="reference internal" href="#viz-sec"><span class="std std-ref">visualization section</span></a>):</p>
+<ul>
+<li><p><code class="docutils literal notranslate"><span class="pre">/artifact/nnsmith/nnsmith-tvm-binning/</span></code></p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">/artifact/nnsmith/nnsmith-ort-binning/</span></code></p></li>
+</ul>
+</li>
+</ul>
+<details class="sd-sphinx-override sd-dropdown sd-card sd-mb-3" open="open">
+<summary class="sd-summary-title sd-card-header sd-bg-light sd-bg-text-light">
+<span class="sd-summary-icon"><svg version="1.1" width="1.0em" height="1.0em" class="sd-octicon sd-octicon-code" viewBox="0 0 16 16" aria-hidden="true"><path fill-rule="evenodd" d="M4.72 3.22a.75.75 0 011.06 1.06L2.06 8l3.72 3.72a.75.75 0 11-1.06 1.06L.47 8.53a.75.75 0 010-1.06l4.25-4.25zm6.56 0a.75.75 0 10-1.06 1.06L13.94 8l-3.72 3.72a.75.75 0 101.06 1.06l4.25-4.25a.75.75 0 000-1.06l-4.25-4.25z"></path></svg></span><strong>Script</strong><div class="sd-summary-down docutils">
+<svg version="1.1" width="1.5em" height="1.5em" class="sd-octicon sd-octicon-chevron-down" viewBox="0 0 24 24" aria-hidden="true"><path fill-rule="evenodd" d="M5.22 8.72a.75.75 0 000 1.06l6.25 6.25a.75.75 0 001.06 0l6.25-6.25a.75.75 0 00-1.06-1.06L12 14.44 6.28 8.72a.75.75 0 00-1.06 0z"></path></svg></div>
+<div class="sd-summary-up docutils">
+<svg version="1.1" width="1.5em" height="1.5em" class="sd-octicon sd-octicon-chevron-up" viewBox="0 0 24 24" aria-hidden="true"><path fill-rule="evenodd" d="M18.78 15.28a.75.75 0 000-1.06l-6.25-6.25a.75.75 0 00-1.06 0l-6.25 6.25a.75.75 0 101.06 1.06L12 9.56l5.72 5.72a.75.75 0 001.06 0z"></path></svg></div>
+</summary><div class="sd-summary-content sd-card-body docutils">
+<div class="highlight-shell notranslate"><div class="highlight"><pre><span></span><span class="nb">cd</span><span class="w"> </span>/artifact<span class="w"> </span><span class="c1"># In the container</span>
+bash<span class="w"> </span>eval_nnsmith.sh
+</pre></div>
+</div>
+</div>
+</details></div>
+</section>
+<section id="e2-graphfuzzer-coverage">
+<span id="exp-e2"></span><h3>E2: GraphFuzzer<a class="footnote-reference brackets" href="#gf" id="id5" role="doc-noteref"><span class="fn-bracket">[</span>2<span class="fn-bracket">]</span></a> Coverage<a class="headerlink" href="#e2-graphfuzzer-coverage" title="Permalink to this heading">#</a></h3>
+<details class="sd-sphinx-override sd-dropdown sd-card sd-mb-3">
+<summary class="sd-summary-title sd-card-header">
+“<em>GraphFuzzer</em>” (..huh?)<div class="sd-summary-down docutils">
+<svg version="1.1" width="1.5em" height="1.5em" class="sd-octicon sd-octicon-chevron-down" viewBox="0 0 24 24" aria-hidden="true"><path fill-rule="evenodd" d="M5.22 8.72a.75.75 0 000 1.06l6.25 6.25a.75.75 0 001.06 0l6.25-6.25a.75.75 0 00-1.06-1.06L12 14.44 6.28 8.72a.75.75 0 00-1.06 0z"></path></svg></div>
+<div class="sd-summary-up docutils">
+<svg version="1.1" width="1.5em" height="1.5em" class="sd-octicon sd-octicon-chevron-up" viewBox="0 0 24 24" aria-hidden="true"><path fill-rule="evenodd" d="M18.78 15.28a.75.75 0 000-1.06l-6.25-6.25a.75.75 0 00-1.06 0l-6.25 6.25a.75.75 0 101.06 1.06L12 9.56l5.72 5.72a.75.75 0 001.06 0z"></path></svg></div>
+</summary><div class="sd-summary-content sd-card-body docutils">
+<p class="sd-card-text">The paper by <em>Luo, Weisi, et al</em><a class="footnote-reference brackets" href="#gf" id="id6" role="doc-noteref"><span class="fn-bracket">[</span>2<span class="fn-bracket">]</span></a> does not give a name to the fuzzer. We call it “<em>GraphFuzzer</em>” for convenience.</p>
+</div>
+</details><div class="important admonition">
+<p class="admonition-title">E2: Evaluating GraphFuzzer on {tvm, ort}</p>
+<ul class="simple">
+<li><p><strong>Fuzzer type</strong>: GraphFuzzer;</p></li>
+<li><p><strong>System under test (SUT)</strong>:</p>
+<ul>
+<li><p>TVM (LLVM CPU backend);</p></li>
+<li><p>ONNXRuntime (CPU backend);</p></li>
+</ul>
+</li>
+<li><p><strong>Experiment time</strong>: 10 hours;</p></li>
+<li><p><strong>Outputs</strong> (will be used in <a class="reference internal" href="#viz-sec"><span class="std std-ref">visualization section</span></a>):</p>
+<ul>
+<li><p><code class="docutils literal notranslate"><span class="pre">/artifact/nnsmith/graphfuzzer-tvm/</span></code></p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">/artifact/nnsmith/graphfuzzer-ort/</span></code></p></li>
+</ul>
+</li>
+</ul>
+<details class="sd-sphinx-override sd-dropdown sd-card sd-mb-3" open="open">
+<summary class="sd-summary-title sd-card-header sd-bg-light sd-bg-text-light">
+<span class="sd-summary-icon"><svg version="1.1" width="1.0em" height="1.0em" class="sd-octicon sd-octicon-code" viewBox="0 0 16 16" aria-hidden="true"><path fill-rule="evenodd" d="M4.72 3.22a.75.75 0 011.06 1.06L2.06 8l3.72 3.72a.75.75 0 11-1.06 1.06L.47 8.53a.75.75 0 010-1.06l4.25-4.25zm6.56 0a.75.75 0 10-1.06 1.06L13.94 8l-3.72 3.72a.75.75 0 101.06 1.06l4.25-4.25a.75.75 0 000-1.06l-4.25-4.25z"></path></svg></span><strong>Script</strong><div class="sd-summary-down docutils">
+<svg version="1.1" width="1.5em" height="1.5em" class="sd-octicon sd-octicon-chevron-down" viewBox="0 0 24 24" aria-hidden="true"><path fill-rule="evenodd" d="M5.22 8.72a.75.75 0 000 1.06l6.25 6.25a.75.75 0 001.06 0l6.25-6.25a.75.75 0 00-1.06-1.06L12 14.44 6.28 8.72a.75.75 0 00-1.06 0z"></path></svg></div>
+<div class="sd-summary-up docutils">
+<svg version="1.1" width="1.5em" height="1.5em" class="sd-octicon sd-octicon-chevron-up" viewBox="0 0 24 24" aria-hidden="true"><path fill-rule="evenodd" d="M18.78 15.28a.75.75 0 000-1.06l-6.25-6.25a.75.75 0 00-1.06 0l-6.25 6.25a.75.75 0 101.06 1.06L12 9.56l5.72 5.72a.75.75 0 001.06 0z"></path></svg></div>
+</summary><div class="sd-summary-content sd-card-body docutils">
+<div class="highlight-shell notranslate"><div class="highlight"><pre><span></span><span class="nb">cd</span><span class="w"> </span>/artifact<span class="w"> </span><span class="c1"># In the container</span>
+bash<span class="w"> </span>eval_graphfuzzer.sh
+</pre></div>
+</div>
+</div>
+</details></div>
+</section>
+<section id="e3-lemon-coverage">
+<span id="exp-e3"></span><h3>E3: LEMON<a class="footnote-reference brackets" href="#lm" id="id7" role="doc-noteref"><span class="fn-bracket">[</span>3<span class="fn-bracket">]</span></a> Coverage<a class="headerlink" href="#e3-lemon-coverage" title="Permalink to this heading">#</a></h3>
+<div class="important admonition">
+<p class="admonition-title">E3: Evaluate LEMON on {tvm, ort}</p>
+<details class="sd-sphinx-override sd-dropdown sd-card sd-mb-3">
+<summary class="sd-summary-title sd-card-header sd-bg-warning sd-bg-text-warning">
+<span class="sd-summary-icon"><svg version="1.1" width="1.0em" height="1.0em" class="sd-octicon sd-octicon-unlock" viewBox="0 0 16 16" aria-hidden="true"><path fill-rule="evenodd" d="M5.5 4a2.5 2.5 0 014.607-1.346.75.75 0 101.264-.808A4 4 0 004 4v2h-.501A1.5 1.5 0 002 7.5v6A1.5 1.5 0 003.5 15h9a1.5 1.5 0 001.5-1.5v-6A1.5 1.5 0 0012.5 6h-7V4zm-.75 3.5H3.5v6h9v-6H4.75z"></path></svg></span>Pre-generated LEMON models<div class="sd-summary-down docutils">
+<svg version="1.1" width="1.5em" height="1.5em" class="sd-octicon sd-octicon-chevron-down" viewBox="0 0 24 24" aria-hidden="true"><path fill-rule="evenodd" d="M5.22 8.72a.75.75 0 000 1.06l6.25 6.25a.75.75 0 001.06 0l6.25-6.25a.75.75 0 00-1.06-1.06L12 14.44 6.28 8.72a.75.75 0 00-1.06 0z"></path></svg></div>
+<div class="sd-summary-up docutils">
+<svg version="1.1" width="1.5em" height="1.5em" class="sd-octicon sd-octicon-chevron-up" viewBox="0 0 24 24" aria-hidden="true"><path fill-rule="evenodd" d="M18.78 15.28a.75.75 0 000-1.06l-6.25-6.25a.75.75 0 00-1.06 0l-6.25 6.25a.75.75 0 101.06 1.06L12 9.56l5.72 5.72a.75.75 0 001.06 0z"></path></svg></div>
+</summary><div class="sd-summary-content sd-card-body docutils">
+<p class="sd-card-text">Evaluating LEMON in NNSmith’s setting is very complicated (<a class="reference internal" href="rdmore.html#gen-lemon"><span class="std std-ref">why?</span></a>).
+For reviewers’ convenience, the LEMON models are pre-generated and pre-converted (see <code class="docutils literal notranslate"><span class="pre">-v</span> <span class="pre">/data/artifact:/...</span></code> in the <a class="reference internal" href="../index.html#gstart"><span class="std std-ref">docker run command</span></a>).
+Nevertheless, you can refer to <a class="reference internal" href="rdmore.html#gen-lemon"><span class="std std-ref">Generate LEMON models from scratch</span></a> to re-generate the models.</p>
+</div>
+</details><ul class="simple">
+<li><p><strong>Fuzzer type</strong>: LEMON;</p></li>
+<li><p><strong>System under test (SUT)</strong>:</p>
+<ul>
+<li><p>TVM (LLVM CPU backend);</p></li>
+<li><p>ONNXRuntime (CPU backend);</p></li>
+</ul>
+</li>
+<li><p><strong>Experiment time</strong>: 3 hours;</p></li>
+<li><p><strong>Outputs</strong> (will be used in <a class="reference internal" href="#viz-sec"><span class="std std-ref">visualization section</span></a>):</p>
+<ul>
+<li><p><code class="docutils literal notranslate"><span class="pre">/artifact/nnsmith/lemon-tvm/</span></code></p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">/artifact/nnsmith/lemon-ort/</span></code></p></li>
+</ul>
+</li>
+</ul>
+<details class="sd-sphinx-override sd-dropdown sd-card sd-mb-3" open="open">
+<summary class="sd-summary-title sd-card-header sd-bg-light sd-bg-text-light">
+<span class="sd-summary-icon"><svg version="1.1" width="1.0em" height="1.0em" class="sd-octicon sd-octicon-code" viewBox="0 0 16 16" aria-hidden="true"><path fill-rule="evenodd" d="M4.72 3.22a.75.75 0 011.06 1.06L2.06 8l3.72 3.72a.75.75 0 11-1.06 1.06L.47 8.53a.75.75 0 010-1.06l4.25-4.25zm6.56 0a.75.75 0 10-1.06 1.06L13.94 8l-3.72 3.72a.75.75 0 101.06 1.06l4.25-4.25a.75.75 0 000-1.06l-4.25-4.25z"></path></svg></span><strong>Script</strong><div class="sd-summary-down docutils">
+<svg version="1.1" width="1.5em" height="1.5em" class="sd-octicon sd-octicon-chevron-down" viewBox="0 0 24 24" aria-hidden="true"><path fill-rule="evenodd" d="M5.22 8.72a.75.75 0 000 1.06l6.25 6.25a.75.75 0 001.06 0l6.25-6.25a.75.75 0 00-1.06-1.06L12 14.44 6.28 8.72a.75.75 0 00-1.06 0z"></path></svg></div>
+<div class="sd-summary-up docutils">
+<svg version="1.1" width="1.5em" height="1.5em" class="sd-octicon sd-octicon-chevron-up" viewBox="0 0 24 24" aria-hidden="true"><path fill-rule="evenodd" d="M18.78 15.28a.75.75 0 000-1.06l-6.25-6.25a.75.75 0 00-1.06 0l-6.25 6.25a.75.75 0 101.06 1.06L12 9.56l5.72 5.72a.75.75 0 001.06 0z"></path></svg></div>
+</summary><div class="sd-summary-content sd-card-body docutils">
+<div class="highlight-shell notranslate"><div class="highlight"><pre><span></span><span class="nb">cd</span><span class="w"> </span>/artifact<span class="w"> </span><span class="c1"># In the container</span>
+bash<span class="w"> </span>eval_lemon.sh
+</pre></div>
+</div>
+</div>
+</details></div>
+</section>
+</section>
+<section id="visualizing-and-understanding-results">
+<span id="viz-sec"></span><h2>Visualizing and understanding results<a class="headerlink" href="#visualizing-and-understanding-results" title="Permalink to this heading">#</a></h2>
+<details class="sd-sphinx-override sd-dropdown sd-card sd-mb-3" open="open">
+<summary class="sd-summary-title sd-card-header sd-bg-light sd-bg-text-light">
+<span class="sd-summary-icon"><svg version="1.1" width="1.0em" height="1.0em" class="sd-octicon sd-octicon-code" viewBox="0 0 16 16" aria-hidden="true"><path fill-rule="evenodd" d="M4.72 3.22a.75.75 0 011.06 1.06L2.06 8l3.72 3.72a.75.75 0 11-1.06 1.06L.47 8.53a.75.75 0 010-1.06l4.25-4.25zm6.56 0a.75.75 0 10-1.06 1.06L13.94 8l-3.72 3.72a.75.75 0 101.06 1.06l4.25-4.25a.75.75 0 000-1.06l-4.25-4.25z"></path></svg></span><strong>Visualizing coverage</strong><div class="sd-summary-down docutils">
+<svg version="1.1" width="1.5em" height="1.5em" class="sd-octicon sd-octicon-chevron-down" viewBox="0 0 24 24" aria-hidden="true"><path fill-rule="evenodd" d="M5.22 8.72a.75.75 0 000 1.06l6.25 6.25a.75.75 0 001.06 0l6.25-6.25a.75.75 0 00-1.06-1.06L12 14.44 6.28 8.72a.75.75 0 00-1.06 0z"></path></svg></div>
+<div class="sd-summary-up docutils">
+<svg version="1.1" width="1.5em" height="1.5em" class="sd-octicon sd-octicon-chevron-up" viewBox="0 0 24 24" aria-hidden="true"><path fill-rule="evenodd" d="M18.78 15.28a.75.75 0 000-1.06l-6.25-6.25a.75.75 0 00-1.06 0l-6.25 6.25a.75.75 0 101.06 1.06L12 9.56l5.72 5.72a.75.75 0 001.06 0z"></path></svg></div>
+</summary><div class="sd-summary-content sd-card-body docutils">
+<p class="sd-card-text">Run the following script to generate images in <code class="docutils literal notranslate"><span class="pre">/artifact/nnsmith/tvm-cov</span></code> and <code class="docutils literal notranslate"><span class="pre">/artifact/nnsmith/ort-cov</span></code>.</p>
+<div class="highlight-shell notranslate"><div class="highlight"><pre><span></span>bash<span class="w"> </span>/artifact/viz_main.sh
+</pre></div>
+</div>
+<div class="highlight-shell notranslate"><div class="highlight"><pre><span></span><span class="c1"># Check the outputs.</span>
+$<span class="w"> </span>ls<span class="w"> </span>/artifact/nnsmith/tvm-cov
+<span class="c1"># tvm_br_cov_venn.png      tvm_branch_cov-time.png  tvm_opt_branch_cov-iter.png</span>
+<span class="c1"># tvm_branch_cov-iter.png  tvm_opt_br_cov_venn.png  tvm_opt_branch_cov-time.png</span>
+$<span class="w"> </span>ls<span class="w"> </span>/artifact/nnsmith/ort-cov/
+<span class="c1"># ort_br_cov_venn.png      ort_branch_cov-time.png  ort_opt_branch_cov-iter.png</span>
+<span class="c1"># ort_branch_cov-iter.png  ort_opt_br_cov_venn.png  ort_opt_branch_cov-time.png</span>
+</pre></div>
+</div>
+</div>
+</details><div class="important admonition">
+<p class="admonition-title">Check the results</p>
+<p>The image results are still in the docker container, we need pull those images out of it to see how they look like.</p>
+<details class="sd-sphinx-override sd-dropdown sd-card sd-mb-3" open="open">
+<summary class="sd-summary-title sd-card-header sd-bg-light sd-bg-text-light">
+<span class="sd-summary-icon"><svg version="1.1" width="1.0em" height="1.0em" class="sd-octicon sd-octicon-code" viewBox="0 0 16 16" aria-hidden="true"><path fill-rule="evenodd" d="M4.72 3.22a.75.75 0 011.06 1.06L2.06 8l3.72 3.72a.75.75 0 11-1.06 1.06L.47 8.53a.75.75 0 010-1.06l4.25-4.25zm6.56 0a.75.75 0 10-1.06 1.06L13.94 8l-3.72 3.72a.75.75 0 101.06 1.06l4.25-4.25a.75.75 0 000-1.06l-4.25-4.25z"></path></svg></span><strong>Get image outputs from docker to local</strong><div class="sd-summary-down docutils">
+<svg version="1.1" width="1.5em" height="1.5em" class="sd-octicon sd-octicon-chevron-down" viewBox="0 0 24 24" aria-hidden="true"><path fill-rule="evenodd" d="M5.22 8.72a.75.75 0 000 1.06l6.25 6.25a.75.75 0 001.06 0l6.25-6.25a.75.75 0 00-1.06-1.06L12 14.44 6.28 8.72a.75.75 0 00-1.06 0z"></path></svg></div>
+<div class="sd-summary-up docutils">
+<svg version="1.1" width="1.5em" height="1.5em" class="sd-octicon sd-octicon-chevron-up" viewBox="0 0 24 24" aria-hidden="true"><path fill-rule="evenodd" d="M18.78 15.28a.75.75 0 000-1.06l-6.25-6.25a.75.75 0 00-1.06 0l-6.25 6.25a.75.75 0 101.06 1.06L12 9.56l5.72 5.72a.75.75 0 001.06 0z"></path></svg></div>
+</summary><div class="sd-summary-content sd-card-body docutils">
+<p class="sd-card-text">First you need to temporarily leave the current container, there are three ways to do it:</p>
+<ol class="arabic simple">
+<li><p class="sd-card-text"><strong>TMUX</strong>: <code class="docutils literal notranslate"><span class="pre">ctr</span> <span class="pre">+</span> <span class="pre">b</span></code> then <code class="docutils literal notranslate"><span class="pre">d</span></code>;</p></li>
+<li><p class="sd-card-text"><strong>Local (recommended)</strong>: just open a new terminal on the machine which is by default out of the container;</p></li>
+<li><p class="sd-card-text"><strong>Local</strong>: type <code class="docutils literal notranslate"><span class="pre">exit</span></code> to exit the container environment (later you can resume the container with <code class="docutils literal notranslate"><span class="pre">docker</span> <span class="pre">start</span> <span class="pre">-i</span> <span class="pre">${USER}-nnsmith</span></code>);</p></li>
+</ol>
+<div class="highlight-shell notranslate"><div class="highlight"><pre><span></span><span class="c1"># Now in the local environment</span>
+docker<span class="w"> </span>cp<span class="w"> </span><span class="si">${</span><span class="nv">USER</span><span class="si">}</span>-nnsmith:/artifact/nnsmith/tvm-cov<span class="w"> </span>.<span class="w"> </span><span class="c1"># copy TVM results to local folder `tvm-cov`</span>
+docker<span class="w"> </span>cp<span class="w"> </span><span class="si">${</span><span class="nv">USER</span><span class="si">}</span>-nnsmith:/artifact/nnsmith/ort-cov<span class="w"> </span>.<span class="w"> </span><span class="c1"># copy ORT results to local folder `ort-cov`</span>
+</pre></div>
+</div>
+</div>
+</details><p>Now let’s check the results corresponding to figures in the paper:</p>
+<details class="sd-sphinx-override sd-dropdown sd-card sd-mb-3">
+<summary class="sd-summary-title sd-card-header sd-bg-warning sd-bg-text-warning">
+<span class="sd-summary-icon"><svg version="1.1" width="1.0em" height="1.0em" class="sd-octicon sd-octicon-alert" viewBox="0 0 16 16" aria-hidden="true"><path fill-rule="evenodd" d="M8.22 1.754a.25.25 0 00-.44 0L1.698 13.132a.25.25 0 00.22.368h12.164a.25.25 0 00.22-.368L8.22 1.754zm-1.763-.707c.659-1.234 2.427-1.234 3.086 0l6.082 11.378A1.75 1.75 0 0114.082 15H1.918a1.75 1.75 0 01-1.543-2.575L6.457 1.047zM9 11a1 1 0 11-2 0 1 1 0 012 0zm-.25-5.25a.75.75 0 00-1.5 0v2.5a.75.75 0 001.5 0v-2.5z"></path></svg></span>Fuzzing randomness<div class="sd-summary-down docutils">
+<svg version="1.1" width="1.5em" height="1.5em" class="sd-octicon sd-octicon-chevron-down" viewBox="0 0 24 24" aria-hidden="true"><path fill-rule="evenodd" d="M5.22 8.72a.75.75 0 000 1.06l6.25 6.25a.75.75 0 001.06 0l6.25-6.25a.75.75 0 00-1.06-1.06L12 14.44 6.28 8.72a.75.75 0 00-1.06 0z"></path></svg></div>
+<div class="sd-summary-up docutils">
+<svg version="1.1" width="1.5em" height="1.5em" class="sd-octicon sd-octicon-chevron-up" viewBox="0 0 24 24" aria-hidden="true"><path fill-rule="evenodd" d="M18.78 15.28a.75.75 0 000-1.06l-6.25-6.25a.75.75 0 00-1.06 0l-6.25 6.25a.75.75 0 101.06 1.06L12 9.56l5.72 5.72a.75.75 0 001.06 0z"></path></svg></div>
+</summary><div class="sd-summary-content sd-card-body docutils">
+<p class="sd-card-text">The sample images below are freshly generated when testing the artifact on the original test-bed (Oct. 14, 2022). They can slightly differ from that in the paper due to fuzzing randomness.</p>
+<p class="sd-card-text">The randomness in fuzzing could come from performance divergence in different system and random seeds.
+This means detailed reproduced data might not be strictly equivalent to that presented in the paper, but the overall trend should be consistent in the long run (say 4 hours).</p>
+</div>
+</details><details class="sd-sphinx-override sd-dropdown sd-card sd-mb-3">
+<summary class="sd-summary-title sd-card-header sd-bg-warning sd-bg-text-warning">
+<span class="sd-summary-icon"><svg version="1.1" width="1.0em" height="1.0em" class="sd-octicon sd-octicon-alert" viewBox="0 0 16 16" aria-hidden="true"><path fill-rule="evenodd" d="M8.22 1.754a.25.25 0 00-.44 0L1.698 13.132a.25.25 0 00.22.368h12.164a.25.25 0 00.22-.368L8.22 1.754zm-1.763-.707c.659-1.234 2.427-1.234 3.086 0l6.082 11.378A1.75 1.75 0 0114.082 15H1.918a1.75 1.75 0 01-1.543-2.575L6.457 1.047zM9 11a1 1 0 11-2 0 1 1 0 012 0zm-.25-5.25a.75.75 0 00-1.5 0v2.5a.75.75 0 001.5 0v-2.5z"></path></svg></span>Potential legend style shifting (<em>if you skipped LEMON</em>)<div class="sd-summary-down docutils">
+<svg version="1.1" width="1.5em" height="1.5em" class="sd-octicon sd-octicon-chevron-down" viewBox="0 0 24 24" aria-hidden="true"><path fill-rule="evenodd" d="M5.22 8.72a.75.75 0 000 1.06l6.25 6.25a.75.75 0 001.06 0l6.25-6.25a.75.75 0 00-1.06-1.06L12 14.44 6.28 8.72a.75.75 0 00-1.06 0z"></path></svg></div>
+<div class="sd-summary-up docutils">
+<svg version="1.1" width="1.5em" height="1.5em" class="sd-octicon sd-octicon-chevron-up" viewBox="0 0 24 24" aria-hidden="true"><path fill-rule="evenodd" d="M18.78 15.28a.75.75 0 000-1.06l-6.25-6.25a.75.75 0 00-1.06 0l-6.25 6.25a.75.75 0 101.06 1.06L12 9.56l5.72 5.72a.75.75 0 001.06 0z"></path></svg></div>
+</summary><div class="sd-summary-content sd-card-body docutils">
+<p class="sd-card-text">According to <a class="reference internal" href="#exp-e3"><span class="std std-ref">E3: LEMON3 Coverage</span></a>, the curve/pie for LEMON baseline might not be available if not starting with the original test-bed). As a result, showing only two baselines make the  curves or pies of the figures below shifted with legend styles. In this case, please distinguish the systems by <strong>tagged labels</strong> as the colors might not match that in the original paper.</p>
+</div>
+</details><div class="tip admonition">
+<p class="admonition-title"><strong>Figure 4: Total branch coverage over time (all files)</strong></p>
+<figure class="align-left" id="f4a">
+<a class="reference internal image-reference" href="../_images/ort_branch_cov-time.png"><img alt="../_images/ort_branch_cov-time.png" src="../_images/ort_branch_cov-time.png" style="width: 306.0px; height: 178.5px;" /></a>
+<figcaption>
+<p><span class="caption-text">Figure 4.(a) <strong>ONNXRuntime</strong> <br />
+In <code class="docutils literal notranslate"><span class="pre">./ort-cov/ort_branch_cov-time.png</span></code></span><a class="headerlink" href="#f4a" title="Permalink to this image">#</a></p>
+</figcaption>
+</figure>
+<figure class="align-right" id="f4b">
+<a class="reference internal image-reference" href="../_images/tvm_branch_cov-time.png"><img alt="../_images/tvm_branch_cov-time.png" src="../_images/tvm_branch_cov-time.png" style="width: 306.0px; height: 178.5px;" /></a>
+<figcaption>
+<p><span class="caption-text">Figure 4.(b) <strong>TVM</strong> <br />
+In <code class="docutils literal notranslate"><span class="pre">./tvm-cov/tvm_branch_cov-time.png</span></code></span><a class="headerlink" href="#f4b" title="Permalink to this image">#</a></p>
+</figcaption>
+</figure>
+</div>
+<div class="tip admonition">
+<p class="admonition-title"><strong>Figure 5: Total branch coverage over test cases (all files)</strong></p>
+<figure class="align-left" id="f5a">
+<a class="reference internal image-reference" href="../_images/ort_branch_cov-iter.png"><img alt="../_images/ort_branch_cov-iter.png" src="../_images/ort_branch_cov-iter.png" style="width: 300.0px; height: 180.0px;" /></a>
+<figcaption>
+<p><span class="caption-text">Figure 5.(a) <strong>ONNXRuntime</strong> <br />
+In <code class="docutils literal notranslate"><span class="pre">./ort-cov/ort_branch_cov-iter.png</span></code></span><a class="headerlink" href="#f5a" title="Permalink to this image">#</a></p>
+</figcaption>
+</figure>
+<figure class="align-right" id="f5b">
+<a class="reference internal image-reference" href="../_images/tvm_branch_cov-iter.png"><img alt="../_images/tvm_branch_cov-iter.png" src="../_images/tvm_branch_cov-iter.png" style="width: 300.0px; height: 180.0px;" /></a>
+<figcaption>
+<p><span class="caption-text">Figure 5.(b) <strong>TVM</strong> <br />
+In <code class="docutils literal notranslate"><span class="pre">./tvm-cov/tvm_branch_cov-iter.png</span></code></span><a class="headerlink" href="#f5b" title="Permalink to this image">#</a></p>
+</figcaption>
+</figure>
+</div>
+<div class="tip admonition">
+<p class="admonition-title"><strong>Figure 6:  Total branch coverage over time (pass files)</strong></p>
+<figure class="align-left" id="f6a">
+<a class="reference internal image-reference" href="../_images/ort_opt_branch_cov-time.png"><img alt="../_images/ort_opt_branch_cov-time.png" src="../_images/ort_opt_branch_cov-time.png" style="width: 306.0px; height: 178.5px;" /></a>
+<figcaption>
+<p><span class="caption-text">Figure 6.(a) <strong>ONNXRuntime</strong> <br />
+<code class="docutils literal notranslate"><span class="pre">./ort-cov/ort_opt_branch_cov-time.png</span></code></span><a class="headerlink" href="#f6a" title="Permalink to this image">#</a></p>
+</figcaption>
+</figure>
+<figure class="align-right" id="f6b">
+<a class="reference internal image-reference" href="../_images/tvm_opt_branch_cov-time.png"><img alt="../_images/tvm_opt_branch_cov-time.png" src="../_images/tvm_opt_branch_cov-time.png" style="width: 306.0px; height: 178.5px;" /></a>
+<figcaption>
+<p><span class="caption-text">Figure 6.(b) <strong>TVM</strong> <br />
+<code class="docutils literal notranslate"><span class="pre">./tvm-cov/tvm_opt_branch_cov-time.png</span></code></span><a class="headerlink" href="#f6b" title="Permalink to this image">#</a></p>
+</figcaption>
+</figure>
+</div>
+<div class="tip admonition">
+<p class="admonition-title"><strong>Figure 7: Venn diagram of overall coverage (total coverage shown in parenthesis)</strong></p>
+<figure class="align-left" id="f7a">
+<a class="reference internal image-reference" href="../_images/ort_br_cov_venn.png"><img alt="../_images/ort_br_cov_venn.png" src="../_images/ort_br_cov_venn.png" style="width: 285.0px; height: 191.4px;" /></a>
+<figcaption>
+<p><span class="caption-text">Figure 7.(a) <strong>ONNXRuntime</strong> <br />
+See <code class="docutils literal notranslate"><span class="pre">./ort-cov/ort_br_cov_venn.png</span></code></span><a class="headerlink" href="#f7a" title="Permalink to this image">#</a></p>
+</figcaption>
+</figure>
+<figure class="align-right" id="f7b">
+<a class="reference internal image-reference" href="../_images/tvm_br_cov_venn.png"><img alt="../_images/tvm_br_cov_venn.png" src="../_images/tvm_br_cov_venn.png" style="width: 285.0px; height: 191.4px;" /></a>
+<figcaption>
+<p><span class="caption-text">Figure 7.(b) <strong>TVM</strong> <br />
+See <code class="docutils literal notranslate"><span class="pre">./tvm-cov/tvm_br_cov_venn.png</span></code></span><a class="headerlink" href="#f7b" title="Permalink to this image">#</a></p>
+</figcaption>
+</figure>
+</div>
+</div>
+<p>Congratulations! You have successfully finished the main experiments of NNSmith!!! 🎉🎉🎉</p>
+</section>
+<section id="read-more">
+<h2>Read more<a class="headerlink" href="#read-more" title="Permalink to this heading">#</a></h2>
+<p>You may further refer to <a class="reference internal" href="rdmore.html"><span class="std std-doc">Read more</span></a> for potential questions and extra/non-main experiments.</p>
+<hr class="footnotes docutils" />
+<aside class="footnote-list brackets">
+<aside class="footnote brackets" id="nsh" role="note">
+<span class="label"><span class="fn-bracket">[</span>1<span class="fn-bracket">]</span></span>
+<span class="backrefs">(<a role="doc-backlink" href="#id1">1</a>,<a role="doc-backlink" href="#id4">2</a>)</span>
+<p>Liu, Jiawei, et al. “NNSmith: Generating Diverse and Valid Test Cases for Deep Learning Compilers.” Proceedings of the 28th ACM International Conference on Architectural Support for Programming Languages and Operating Systems. 2023.</p>
+</aside>
+<aside class="footnote brackets" id="gf" role="note">
+<span class="label"><span class="fn-bracket">[</span>2<span class="fn-bracket">]</span></span>
+<span class="backrefs">(<a role="doc-backlink" href="#id2">1</a>,<a role="doc-backlink" href="#id5">2</a>,<a role="doc-backlink" href="#id6">3</a>)</span>
+<p>Luo, Weisi, et al. “Graph-based fuzz testing for deep learning inference engines.” 2021 IEEE/ACM 43rd International Conference on Software Engineering (ICSE). IEEE, 2021.</p>
+</aside>
+<aside class="footnote brackets" id="lm" role="note">
+<span class="label"><span class="fn-bracket">[</span>3<span class="fn-bracket">]</span></span>
+<span class="backrefs">(<a role="doc-backlink" href="#id3">1</a>,<a role="doc-backlink" href="#id7">2</a>)</span>
+<p>Wang, Zan, et al. “Deep learning library testing via effective model generation.” Proceedings of the 28th ACM Joint Meeting on European Software Engineering Conference and Symposium on the Foundations of Software Engineering. 2020.</p>
+</aside>
+</aside>
+</section>
+</section>
+
+
+                </article>
+              
+              
+              
+                <footer class="bd-footer-article">
+                  <!-- Previous / next buttons -->
+<div class="prev-next-area">
+    <a class="left-prev"
+       href="../index.html"
+       title="previous page">
+      <i class="fa-solid fa-angle-left"></i>
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">previous</p>
+        <p class="prev-next-title"><strong>NNSmith ASPLOS’23 Artifact!</strong></p>
+      </div>
+    </a>
+    <a class="right-next"
+       href="rdmore.html"
+       title="next page">
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">next</p>
+        <p class="prev-next-title"><strong>Read more</strong></p>
+      </div>
+      <i class="fa-solid fa-angle-right"></i>
+    </a>
+</div>
+                </footer>
+              
+            </div>
+            
+            
+              
+                <div class="bd-sidebar-secondary bd-toc"><div class="sidebar-secondary-items sidebar-secondary__inner">
+
+  <div class="sidebar-secondary-item">
+  <div class="page-toc tocsection onthispage">
+    <i class="fa-solid fa-list"></i> On this page
+  </div>
+  <nav class="bd-toc-nav page-toc">
+    <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#evidence-of-bug-finding">Evidence of bug finding</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#coverage-experiments">Coverage experiments</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#tl-dr">TL;DR</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#e1-nnsmith-coverage">E1: NNSmith Coverage</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#e2-graphfuzzer-coverage">E2: GraphFuzzer Coverage</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#e3-lemon-coverage">E3: LEMON Coverage</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#visualizing-and-understanding-results">Visualizing and understanding results</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#read-more">Read more</a></li>
+</ul>
+  </nav></div>
+
+  <div class="sidebar-secondary-item">
+  <div class="tocsection sourcelink">
+    <a href="../_sources/markdown/evaluation.md.txt">
+      <i class="fa-solid fa-file-lines"></i> Show Source
+    </a>
+  </div>
+</div>
+
+</div></div>
+              
+            
+          </div>
+          <footer class="bd-footer-content">
+            <div class="bd-footer-content__inner"></div>
+          </footer>
+        
+      </main>
+    </div>
+  </div>
+  
+  <!-- Scripts loaded after <body> so the DOM is not blocked -->
+  <script src="../_static/scripts/bootstrap.js?digest=12da95d707ffb74b382d"></script>
+<script src="../_static/scripts/pydata-sphinx-theme.js?digest=12da95d707ffb74b382d"></script>
+
+  <footer class="bd-footer">
+<div class="bd-footer__inner bd-page-width">
+  
+    <div class="footer-items__start">
+      
+        <div class="footer-item">
+  <p class="copyright">
+    
+      © Copyright 2022, Jiawei Liu.
+      <br/>
+    
+  </p>
+</div>
+      
+        <div class="footer-item">
+  <p class="sphinx-version">
+    Created using <a href="https://sphinx-doc.org/">Sphinx</a> 5.3.0.
+    <br/>
+  </p>
+</div>
+      
+    </div>
+  
+  
+    <div class="footer-items__end">
+      
+        <div class="footer-item"><p class="theme-version">
+  Built with the <a href="https://pydata-sphinx-theme.readthedocs.io/en/stable/index.html">PyData Sphinx Theme</a> 0.13.1.
+</p></div>
+      
+    </div>
+  
+</div>
+
+  </footer>
+  </body>
+</html>
